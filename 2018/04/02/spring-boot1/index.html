@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="今天对着视频尝试着写了一下Spring Boot，下面说一下感受与问题 感受 不得不说Spring Boot真的是十分好用啊，总的来说就是配置简单， 启动快速， 极易上手  环境Windows10 家庭版Spring Boot 2.0eclipse4.7.3 配置首先新建一个maven工程，然后将以下几行代码复制到pom.xml中1234567891011&amp;lt;parent&amp;gt;	&amp;lt;gr">
+<meta name="description" content="今天对着视频尝试着写了一下Spring Boot，下面说一下感受与问题 感受 不得不说Spring Boot真的是十分好用啊，总的来说就是配置简单， 启动快速， 极易上手">
 <meta name="keywords" content="spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识Spring Boot(1)">
 <meta property="og:url" content="http://yoursite.com/2018/04/02/spring-boot1/index.html">
 <meta property="og:site_name" content="永恒之恋">
-<meta property="og:description" content="今天对着视频尝试着写了一下Spring Boot，下面说一下感受与问题 感受 不得不说Spring Boot真的是十分好用啊，总的来说就是配置简单， 启动快速， 极易上手  环境Windows10 家庭版Spring Boot 2.0eclipse4.7.3 配置首先新建一个maven工程，然后将以下几行代码复制到pom.xml中1234567891011&amp;lt;parent&amp;gt;	&amp;lt;gr">
+<meta property="og:description" content="今天对着视频尝试着写了一下Spring Boot，下面说一下感受与问题 感受 不得不说Spring Boot真的是十分好用啊，总的来说就是配置简单， 启动快速， 极易上手">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/springboot-main.png">
 <meta property="og:image" content="http://yoursite.com/images/notfound.png">
 <meta property="og:image" content="http://yoursite.com/images/hello-spring-boot.png">
-<meta property="og:updated_time" content="2018-04-02T14:17:39.574Z">
+<meta property="og:updated_time" content="2018-04-02T23:26:07.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Spring Boot(1)">
-<meta name="twitter:description" content="今天对着视频尝试着写了一下Spring Boot，下面说一下感受与问题 感受 不得不说Spring Boot真的是十分好用啊，总的来说就是配置简单， 启动快速， 极易上手  环境Windows10 家庭版Spring Boot 2.0eclipse4.7.3 配置首先新建一个maven工程，然后将以下几行代码复制到pom.xml中1234567891011&amp;lt;parent&amp;gt;	&amp;lt;gr">
+<meta name="twitter:description" content="今天对着视频尝试着写了一下Spring Boot，下面说一下感受与问题 感受 不得不说Spring Boot真的是十分好用啊，总的来说就是配置简单， 启动快速， 极易上手">
 <meta name="twitter:image" content="http://yoursite.com/images/springboot-main.png">
 
 
@@ -409,6 +409,7 @@
 <h2 id="感受"><a href="#感受" class="headerlink" title="感受"></a>感受</h2><blockquote>
 <p>不得不说Spring Boot真的是十分好用啊，总的来说就是<strong><em>配置简单， 启动快速， 极易上手</em></strong></p>
 </blockquote>
+<a id="more"></a>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Windows10 家庭版<br>Spring Boot 2.0<br>eclipse4.7.3</p>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>首先新建一个maven工程，然后将以下几行代码复制到pom.xml中<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>这时候maven基本就配置好了，接下来我们来写java代码，首先新建一个类名称任意，然后写一个main方法，如果安装了Spring插件的话，eclipse会有两个main方法提示这时候选第二个就好了<br><img src="\images\springboot-main.png" alt="main"><br>对于没有安装插件的朋友只需要这样写main方法就好了,注意当中的<strong><em>SampleController.class</em></strong>,要改成<strong><em>类名.class</em></strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    SpringApplication.run(SampleController.class, args);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
