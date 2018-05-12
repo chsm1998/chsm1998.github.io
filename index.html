@@ -262,6 +262,369 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/spring-mvc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="永恒之恋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="永恒之恋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/12/spring-mvc/" itemprop="url">spring-mvc的疑惑(持续更新)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-12T09:00:41+08:00">
+                2018-05-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-12T09:29:29+08:00">
+                2018-05-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/框架/" itemprop="url" rel="index">
+                    <span itemprop="name">框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/12/spring-mvc/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/12/spring-mvc/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-SessionAttribute注解"><a href="#1-SessionAttribute注解" class="headerlink" title="1.@SessionAttribute注解"></a>1.@SessionAttribute注解</h2><p>以下是官方文档的解释：</p>
+<blockquote>
+<p>If you need access to pre-existing session attributes that are managed globally, i.e. outside the controller (e.g. by a filter), <strong><em>and may or may not be present</em></strong> use the @SessionAttribute annotation on a method parameter:</p>
+</blockquote>
+<p>关键在于<strong><em>and may or may not be present</em></strong>翻译过来是:<strong><em>可能存在也可能不存在</em></strong><br>而在实际使用时若session无法获取到该属性是会报400错误的：</p>
+<blockquote>
+<p>Missing session attribute ‘user’ of type User</p>
+</blockquote>
+<h2 id="2-RequestBody"><a href="#2-RequestBody" class="headerlink" title="2.@RequestBody"></a>2.@RequestBody</h2><p>关于该注解还是由于自己底层知识不够造成的，昨天在编写代码的过程中发现会报一个<strong><em>Stream close</em></strong>的错误，想尝试Debug发现根本没进入自己写的方法，然后就是各种百度，依旧没找到答案……<br>没办法有bug也得解决啊，既然没进入方法肯定是spring mvc赋值时的问题呗，然后一个一个删参数，发现当参数中有两个@RequestBody时会发生这个错误，后来一想也是一次请求怎么可能会有两个请求体呢？<br>后来的解决方法是利用map结束值，然后再手动赋值给对象</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/05/mybatis-error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="永恒之恋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="永恒之恋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/05/mybatis-error/" itemprop="url">使用mybatis中遇到的一些坑(持续更新)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-05T16:37:30+08:00">
+                2018-04-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-05T17:03:23+08:00">
+                2018-04-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/框架/" itemprop="url" rel="index">
+                    <span itemprop="name">框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/05/mybatis-error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/04/05/mybatis-error/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="当xxxMapper的方法需要多个参数时，引发的异常"><a href="#当xxxMapper的方法需要多个参数时，引发的异常" class="headerlink" title="当xxxMapper的方法需要多个参数时，引发的异常"></a>当xxxMapper的方法需要多个参数时，引发的异常</h2><p>方法：</p>
+<blockquote>
+<p>User getUser(Integer id, String username);</p>
+</blockquote>
+<p>xml配置:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getUser"</span> <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">	select * from User where id = #&#123;id&#125; and username = #&#123;username&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>此时若调用getUser方法会抛出一个异常：</p>
+<blockquote>
+<p><span style="color: red">Cause: org.apache.ibatis.binding.BindingException: Parameter ‘id’ not found. Available parameters are [arg1, arg0, param1, param2]</span></p>
+</blockquote>
+<p>造成原因：</p>
+<blockquote>
+<p>由于mybatis会自动将参数封装成一个map，该map的key默认为param+参数位置，所以此时用id和username取值会报错</p>
+</blockquote>
+<p>解决办法：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getUser"</span> <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">	select * from User where id = #&#123;param1&#125; and username = #&#123;param2&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>如果非要用#{id}和#{username}怎么办？<br>加上@Param注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">User <span class="title">getUser</span><span class="params">(@Param(<span class="string">"id"</span>)</span>Integer id, @<span class="title">Param</span><span class="params">(<span class="string">"username"</span>)</span>String username)</span>;</span><br></pre></td></tr></table></figure></p>
+<p>当然这种解决办法让人感觉还是很麻烦，有没有简单一点的方式呢？</p>
+<ol>
+<li>直接传入一个pojo对象<blockquote>
+<p>例： User getUser(User user);</p>
+</blockquote>
+</li>
+<li>若没有pojo怎么办？直接传入map<blockquote>
+<p>例： User getUser(Map&lt;Object, Object&gt; map);</p>
+</blockquote>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/05/mybatis03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1636,7 +1999,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1658,7 +2021,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
