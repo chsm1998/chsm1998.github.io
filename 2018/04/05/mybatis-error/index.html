@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="当xxxMapper的方法需要多个参数时，引发的异常方法：  User getUser(Integer id, String username);  xml配置:123&amp;lt;select id=&quot;getUser&quot; resultType=&quot;user&quot;&amp;gt;	select * from User where id = #&amp;#123;id&amp;#125; and username = #&amp;#123;us">
+<meta name="description" content="当xxxMapper的方法需要多个参数时，引发的异常方法：  User getUser(Integer id, String username);">
 <meta name="keywords" content="java,mybatis,error">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用mybatis中遇到的一些坑(持续更新)">
 <meta property="og:url" content="http://yoursite.com/2018/04/05/mybatis-error/index.html">
 <meta property="og:site_name" content="永恒之恋">
-<meta property="og:description" content="当xxxMapper的方法需要多个参数时，引发的异常方法：  User getUser(Integer id, String username);  xml配置:123&amp;lt;select id=&quot;getUser&quot; resultType=&quot;user&quot;&amp;gt;	select * from User where id = #&amp;#123;id&amp;#125; and username = #&amp;#123;us">
+<meta property="og:description" content="当xxxMapper的方法需要多个参数时，引发的异常方法：  User getUser(Integer id, String username);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-05T09:03:23.342Z">
+<meta property="og:updated_time" content="2018-05-27T05:34:07.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用mybatis中遇到的一些坑(持续更新)">
-<meta name="twitter:description" content="当xxxMapper的方法需要多个参数时，引发的异常方法：  User getUser(Integer id, String username);  xml配置:123&amp;lt;select id=&quot;getUser&quot; resultType=&quot;user&quot;&amp;gt;	select * from User where id = #&amp;#123;id&amp;#125; and username = #&amp;#123;us">
+<meta name="twitter:description" content="当xxxMapper的方法需要多个参数时，引发的异常方法：  User getUser(Integer id, String username);">
 
 
 
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-05T17:03:23+08:00">
-                2018-04-05
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-27T13:34:07+08:00">
+                2018-05-27
               </time>
             
           </span>
@@ -379,6 +379,7 @@
 <blockquote>
 <p>User getUser(Integer id, String username);</p>
 </blockquote>
+<a id="more"></a>
 <p>xml配置:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getUser"</span> <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">	select * from User where id = #&#123;id&#125; and username = #&#123;username&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>此时若调用getUser方法会抛出一个异常：</p>
 <blockquote>
@@ -572,7 +573,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

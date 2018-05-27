@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="永恒之恋">
 <meta property="og:description" content="1.@SessionAttribute注解以下是官方文档的解释：  If you need access to pre-existing session attributes that are managed globally, i.e. outside the controller (e.g. by a filter), and may or may not be present use the">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-12T01:29:29.668Z">
+<meta property="og:updated_time" content="2018-05-27T05:34:09.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring-mvc的疑惑(持续更新)">
 <meta name="twitter:description" content="1.@SessionAttribute注解以下是官方文档的解释：  If you need access to pre-existing session attributes that are managed globally, i.e. outside the controller (e.g. by a filter), and may or may not be present use the">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-12T09:29:29+08:00">
-                2018-05-12
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-27T13:34:09+08:00">
+                2018-05-27
               </time>
             
           </span>
@@ -383,6 +383,7 @@
 <blockquote>
 <p>Missing session attribute ‘user’ of type User</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="2-RequestBody"><a href="#2-RequestBody" class="headerlink" title="2.@RequestBody"></a>2.@RequestBody</h2><p>关于该注解还是由于自己底层知识不够造成的，昨天在编写代码的过程中发现会报一个<strong><em>Stream close</em></strong>的错误，想尝试Debug发现根本没进入自己写的方法，然后就是各种百度，依旧没找到答案……<br>没办法有bug也得解决啊，既然没进入方法肯定是spring mvc赋值时的问题呗，然后一个一个删参数，发现当参数中有两个@RequestBody时会发生这个错误，后来一想也是一次请求怎么可能会有两个请求体呢？<br>后来的解决方法是利用map结束值，然后再手动赋值给对象</p>
 
       
@@ -427,6 +428,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/27/teat-zteoa/" rel="prev" title="zteoa项目">
+                zteoa项目 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -551,7 +556,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
