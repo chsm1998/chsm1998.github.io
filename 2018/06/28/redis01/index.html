@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java,spring,spring mvc," />
+  <meta name="keywords" content="nosql,redis," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1.@SessionAttribute注解以下是官方文档的解释：  If you need access to pre-existing session attributes that are managed globally, i.e. outside the controller (e.g. by a filter), and may or may not be present use the">
-<meta name="keywords" content="java,spring,spring mvc">
+<meta name="description" content="遇到的问题无法连接上redis使用redis-cli可以正常使用redis，但是在Windows中使用python连不上，这就很烦躁，没办法只能靠百度了1.可能是端口未开放使用该命令开放端口  firewall-cmd –zone=public –add-port=6379/tcp –permanent">
+<meta name="keywords" content="nosql,redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring-mvc的疑惑(持续更新)">
-<meta property="og:url" content="http://yoursite.com/2018/05/12/spring-mvc/index.html">
+<meta property="og:title" content="连接redis">
+<meta property="og:url" content="http://yoursite.com/2018/06/28/redis01/index.html">
 <meta property="og:site_name" content="永恒之恋">
-<meta property="og:description" content="1.@SessionAttribute注解以下是官方文档的解释：  If you need access to pre-existing session attributes that are managed globally, i.e. outside the controller (e.g. by a filter), and may or may not be present use the">
+<meta property="og:description" content="遇到的问题无法连接上redis使用redis-cli可以正常使用redis，但是在Windows中使用python连不上，这就很烦躁，没办法只能靠百度了1.可能是端口未开放使用该命令开放端口  firewall-cmd –zone=public –add-port=6379/tcp –permanent">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-27T05:34:09.217Z">
+<meta property="og:updated_time" content="2018-06-28T04:21:03.393Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring-mvc的疑惑(持续更新)">
-<meta name="twitter:description" content="1.@SessionAttribute注解以下是官方文档的解释：  If you need access to pre-existing session attributes that are managed globally, i.e. outside the controller (e.g. by a filter), and may or may not be present use the">
+<meta name="twitter:title" content="连接redis">
+<meta name="twitter:description" content="遇到的问题无法连接上redis使用redis-cli可以正常使用redis，但是在Windows中使用python连不上，这就很烦躁，没办法只能靠百度了1.可能是端口未开放使用该命令开放端口  firewall-cmd –zone=public –add-port=6379/tcp –permanent">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/12/spring-mvc/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/28/redis01/"/>
 
 
 
 
 
-  <title>spring-mvc的疑惑(持续更新) | 永恒之恋</title>
+  <title>连接redis | 永恒之恋</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/spring-mvc/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/redis01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="永恒之恋">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring-mvc的疑惑(持续更新)</h1>
+          <h1 class="post-title" itemprop="name headline">连接redis</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-12T09:00:41+08:00">
-                2018-05-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-28T12:00:57+08:00">
+                2018-06-28
               </time>
             
 
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-27T13:34:09+08:00">
-                2018-05-27
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-28T12:21:03+08:00">
+                2018-06-28
               </time>
             
           </span>
@@ -327,8 +327,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/框架/" itemprop="url" rel="index">
-                    <span itemprop="name">框架</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -345,9 +345,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/12/spring-mvc/#comments" itemprop="discussionUrl">
+                <a href="/2018/06/28/redis01/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/12/spring-mvc/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/06/28/redis01/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -375,16 +375,20 @@
       
 
       
-        <h2 id="1-SessionAttribute注解"><a href="#1-SessionAttribute注解" class="headerlink" title="1.@SessionAttribute注解"></a>1.@SessionAttribute注解</h2><p>以下是官方文档的解释：</p>
+        <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="无法连接上redis"><a href="#无法连接上redis" class="headerlink" title="无法连接上redis"></a>无法连接上redis</h3><p>使用redis-cli可以正常使用redis，但是在Windows中使用python连不上，这就很烦躁，没办法只能靠百度了<br>1.可能是端口未开放<br>使用该命令开放端口</p>
 <blockquote>
-<p>If you need access to pre-existing session attributes that are managed globally, i.e. outside the controller (e.g. by a filter), <strong><em>and may or may not be present</em></strong> use the @SessionAttribute annotation on a method parameter:</p>
-</blockquote>
-<p>关键在于<strong><em>and may or may not be present</em></strong>翻译过来是:<strong><em>可能存在也可能不存在</em></strong><br>而在实际使用时若session无法获取到该属性是会报400错误的：</p>
-<blockquote>
-<p>Missing session attribute ‘user’ of type User</p>
+<p>firewall-cmd –zone=public –add-port=6379/tcp –permanent</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="2-RequestBody"><a href="#2-RequestBody" class="headerlink" title="2.@RequestBody"></a>2.@RequestBody</h2><p>关于该注解还是由于自己底层知识不够造成的，昨天在编写代码的过程中发现会报一个<strong><em>Stream close</em></strong>的错误，想尝试Debug发现根本没进入自己写的方法，然后就是各种百度，依旧没找到答案……<br>没办法有bug也得解决啊，既然没进入方法肯定是spring mvc赋值时的问题呗，然后一个一个删参数，发现当参数中有两个@RequestBody时会发生这个错误，后来一想也是一次请求怎么可能会有两个请求体呢？<br>后来的解决方法是利用map结束值，然后再手动赋值给对象</p>
+<p>2.修改redis.conf配置</p>
+<blockquote>
+<p>将bind 127.0.0.1 改为 bind 0.0.0.0<br>将protected-mode yes 改为 protected-mode no</p>
+</blockquote>
+<h2 id="安装python的redis模块"><a href="#安装python的redis模块" class="headerlink" title="安装python的redis模块"></a>安装python的redis模块</h2><blockquote>
+<p>pip install redis</p>
+</blockquote>
+<h2 id="连接redis"><a href="#连接redis" class="headerlink" title="连接redis"></a>连接redis</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line">conn = redis.StrictRedis(host=<span class="string">'ip地址'</span>, password=<span class="string">'密码'</span>)</span><br><span class="line">conn.set(<span class="string">'test'</span>, <span class="string">'test1'</span>)</span><br><span class="line">print(conn.get(<span class="string">'test'</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><p><a href="https://blog.csdn.net/skymouse2002/article/details/52279553" target="_blank" rel="noopener">虚拟机安装Redis后无法连接问题的处理</a><br><a href="https://blog.csdn.net/lyg_come_on/article/details/62889559" target="_blank" rel="noopener">redis的配置（安装、启动、本机与虚拟机的redis的连接）</a><br><a href="https://www.cnblogs.com/machanghai/p/5497043.html" target="_blank" rel="noopener">redis使用密码登录</a></p>
 
       
     </div>
@@ -402,11 +406,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/nosql/" rel="tag"># nosql</a>
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
-          
-            <a href="/tags/spring-mvc/" rel="tag"># spring mvc</a>
+            <a href="/tags/redis/" rel="tag"># redis</a>
           
         </div>
       
@@ -419,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/05/mybatis-error/" rel="next" title="使用mybatis中遇到的一些坑(持续更新)">
-                <i class="fa fa-chevron-left"></i> 使用mybatis中遇到的一些坑(持续更新)
+              <a href="/2018/06/28/install-redis/" rel="next" title="Linux下redis的安装">
+                <i class="fa fa-chevron-left"></i> Linux下redis的安装
               </a>
             
           </div>
@@ -428,10 +430,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/27/team-zteoa/" rel="prev" title="zteoa项目">
-                zteoa项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -621,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SessionAttribute注解"><span class="nav-number">1.</span> <span class="nav-text">1.@SessionAttribute注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-RequestBody"><span class="nav-number">2.</span> <span class="nav-text">2.@RequestBody</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无法连接上redis"><span class="nav-number">1.1.</span> <span class="nav-text">无法连接上redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装python的redis模块"><span class="nav-number">2.</span> <span class="nav-text">安装python的redis模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接redis"><span class="nav-number">3.</span> <span class="nav-text">连接redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考博客"><span class="nav-number">4.</span> <span class="nav-text">参考博客</span></a></li></ol></div>
             
 
           </div>
@@ -784,9 +782,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/05/12/spring-mvc/';
-          this.page.identifier = '2018/05/12/spring-mvc/';
-          this.page.title = 'spring-mvc的疑惑(持续更新)';
+          this.page.url = 'http://yoursite.com/2018/06/28/redis01/';
+          this.page.identifier = '2018/06/28/redis01/';
+          this.page.title = '连接redis';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
