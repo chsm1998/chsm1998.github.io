@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Linux下nginx的安装]]></title>
+    <url>%2F2018%2F07%2F06%2Fnginx01%2F</url>
+    <content type="text"><![CDATA[遇到的问题the HTTP rewrite module requires the PCRE library error: the HTTP rewrite module requires the PCRE library.You can either disable the module by using –without-http_rewrite_moduleoption, or install the PCRE library into the system, or build the PCRE librarystatically from the source with nginx by using –with-pcre= option. 解决方案： yum -y install pcre-devel the HTTP gzip module requires the zlib library error: the HTTP gzip module requires the zlib library.You can either disable the module by using –without-http_gzip_moduleoption, or install the zlib library into the system, or build the zlib librarystatically from the source with nginx by using –with-zlib= option. 解决方案： yum install -y zlib-devel nginx的下载及安装官网12345678910// 下载wget http://nginx.org/download/nginx-1.14.0.tar.gz// 解压tar xzvf nginx-1.14.0.tar.gz// 进入 nginx-1.14.0目录cd nginx-1.14.0// 安装./configuremakemake install 启动nginx进入安装目录，默认为/usr/local/nginx ./sbin/nginx 停止nginx nginx -s stop 重启nginx nginx -s reload]]></content>
+      <categories>
+        <category>服务器</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[连接redis]]></title>
+    <url>%2F2018%2F06%2F28%2Fredis01%2F</url>
+    <content type="text"><![CDATA[遇到的问题无法连接上redis使用redis-cli可以正常使用redis，但是在Windows中使用python连不上，这就很烦躁，没办法只能靠百度了1.可能是端口未开放使用该命令开放端口1firewall-cmd --zone=public --add-port=6379/tcp --permanent 2.修改redis.conf配置 将bind 127.0.0.1 改为 bind 0.0.0.0将protected-mode yes 改为 protected-mode no 安装python的redis模块 pip install redis python连接redis12345import redisconn = redis.StrictRedis(host='ip地址', password='密码')conn.set('test', 'test1')print(conn.get('test')) java连接redispom.xml12345678&lt;dependencies&gt; &lt;!-- https://mvnrepository.com/artifact/redis.clients/jedis --&gt; &lt;dependency&gt; &lt;groupId&gt;redis.clients&lt;/groupId&gt; &lt;artifactId&gt;jedis&lt;/artifactId&gt; &lt;version&gt;2.9.0&lt;/version&gt; &lt;/dependency&gt;&lt;/dependencies&gt; java代码1234567891011121314package com.yhzl.dao01.redis;import redis.clients.jedis.Jedis;public class RedisDay01 &#123; public static void main(String[] args) &#123; Jedis jedis = new Jedis("ip地址"); jedis.auth("密码"); jedis.set("test1", "test1"); System.out.println(jedis.get("test1")); &#125; &#125; 参考博客虚拟机安装Redis后无法连接问题的处理redis的配置（安装、启动、本机与虚拟机的redis的连接）redis使用密码登录]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>nosql</tag>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux下redis的安装]]></title>
+    <url>%2F2018%2F06%2F28%2Finstall-redis%2F</url>
+    <content type="text"><![CDATA[遇到的问题本次安装redis过程中遇到了不少问题在此一一记录下来！！！ yum出现Could not retrieve mirrorlist出现该问题一般是由于网络有问题，具体解决方案参照https://blog.csdn.net/gebitan505/article/details/54584213 wget未找到命令解决方案：https://blog.csdn.net/djj_alice/article/details/80407769 jemalloc/jemalloc.h：没有那个文件或目录解决方案：https://blog.csdn.net/honchou56/article/details/53994708 make后报错安装gcc，解决方案：https://yq.aliyun.com/articles/238783 版本Linux版本： CentOS Linux release 7.5.1804 (Core)Redis版本： 4.0.10 64位 redis的下载进入该页面https://redis.io/download找到Installation，按照步骤来即可完成安装。 redis的启动 src/redis-server &amp; 注意后面要加一个&amp;，否则ctrl+c会关闭redis，&amp;代表后台运行然后执行 src/redis-cli 即可进入redis]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>nosql</tag>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[maven]]></title>
+    <url>%2F2018%2F05%2F27%2Fmaven%2F</url>
+    <content type="text"><![CDATA[官网下载mavenhttps://maven.apache.org/download.cgi 解压并进入conf双击setting.xml将maven中央仓库改为阿里云的，在mirrors节点下添加如下代码123456&lt;mirror&gt; &lt;id&gt;alimaven&lt;/id&gt; &lt;name&gt;aliyun maven&lt;/name&gt; &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt; &lt;mirrorOf&gt;central&lt;/mirrorOf&gt; &lt;/mirror&gt; 将jdk版本改为1.8，在profiles节点下添加如下代码123456789101112&lt;profile&gt; &lt;id&gt;jdk18&lt;/id&gt; &lt;activation&gt; &lt;activeByDefault&gt;true&lt;/activeByDefault&gt; &lt;jdk&gt;1.8&lt;/jdk&gt; &lt;/activation&gt; &lt;properties&gt; &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt; &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt; &lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt; &lt;/properties&gt; &lt;/profile&gt; 配置eclipse找到以下目录 Window-&gt;Preferences-&gt;maven-&gt;User Settings 将User Settings的路径更改为刚刚配置的setting.xml的路径]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[zteoa项目]]></title>
+    <url>%2F2018%2F05%2F27%2Fteam-zteoa%2F</url>
+    <content type="text"><![CDATA[初始化项目项目地址：https://github.com/chsm1998/team_zteoa.git 方法一：使用git clone命令拷贝然后导入eclipse1git clone https://github.com/chsm1998/team_zteoa.git 方法二：首先找到Git Repositories点击之后下方将出现 然后点击出现该框后一直next就好了 拷贝完项目后点击import projects 完成后应该有如下目录 项目要求数据库新建用户 用户名为:three,密码为:team参考链接 注意事项 禁止向leader分支提交代码 禁止修改公共配置文件 禁止改动他人代码，若需要使用接口，请与模块负责人联系，不得直接更改他人模块 每个类需注明编写人、编写时间，对于接口方法需编写注释指明接口作用 其他细则参照团队开发]]></content>
+      <categories>
+        <category>团队</category>
+      </categories>
+      <tags>
+        <tag>team</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring-mvc的疑惑(持续更新)]]></title>
+    <url>%2F2018%2F05%2F12%2Fspring-mvc%2F</url>
+    <content type="text"><![CDATA[1.@SessionAttribute注解以下是官方文档的解释： If you need access to pre-existing session attributes that are managed globally, i.e. outside the controller (e.g. by a filter), and may or may not be present use the @SessionAttribute annotation on a method parameter: 关键在于and may or may not be present翻译过来是:可能存在也可能不存在而在实际使用时若session无法获取到该属性是会报400错误的： Missing session attribute ‘user’ of type User 2.@RequestBody关于该注解还是由于自己底层知识不够造成的，昨天在编写代码的过程中发现会报一个Stream close的错误，想尝试Debug发现根本没进入自己写的方法，然后就是各种百度，依旧没找到答案……没办法有bug也得解决啊，既然没进入方法肯定是spring mvc赋值时的问题呗，然后一个一个删参数，发现当参数中有两个@RequestBody时会发生这个错误，后来一想也是一次请求怎么可能会有两个请求体呢？后来的解决方法是利用map结束值，然后再手动赋值给对象]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>spring</tag>
+        <tag>spring mvc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用mybatis中遇到的一些坑(持续更新)]]></title>
+    <url>%2F2018%2F04%2F05%2Fmybatis-error%2F</url>
+    <content type="text"><![CDATA[当xxxMapper的方法需要多个参数时，引发的异常方法： User getUser(Integer id, String username); xml配置:123&lt;select id="getUser" resultType="user"&gt; select * from User where id = #&#123;id&#125; and username = #&#123;username&#125;&lt;/select&gt; 此时若调用getUser方法会抛出一个异常： Cause: org.apache.ibatis.binding.BindingException: Parameter ‘id’ not found. Available parameters are [arg1, arg0, param1, param2] 造成原因： 由于mybatis会自动将参数封装成一个map，该map的key默认为param+参数位置，所以此时用id和username取值会报错 解决办法：123&lt;select id="getUser" resultType="user"&gt; select * from User where id = #&#123;param1&#125; and username = #&#123;param2&#125;&lt;/select&gt; 如果非要用#{id}和#{username}怎么办？加上@Param注解1User getUser(@Param("id")Integer id, @Param("username")String username); 当然这种解决办法让人感觉还是很麻烦，有没有简单一点的方式呢？ 直接传入一个pojo对象 例： User getUser(User user); 若没有pojo怎么办？直接传入map 例： User getUser(Map&lt;Object, Object&gt; map);]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>mybatis</tag>
+        <tag>error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mybatis03--xml映射文件]]></title>
+    <url>%2F2018%2F04%2F05%2Fmybatis03%2F</url>
+    <content type="text"><![CDATA[select使用非常简单：123&lt;select id="selectPerson" parameterType="int" resultType="hashmap"&gt; SELECT * FROM PERSON WHERE ID = #&#123;id&#125;&lt;/select&gt; 下面讲一下其中常用的属性： id 唯一标识符 parameterType 传入的参数类型，该属性是可选的，mybatis会自动推断 resultType 返回值类型，不能与resultMap同时使用 resultMap 外部 resultMap 的命名引用关于resultType和resultMap特别说明一下，官方给出的说明特别简短，具体两者有什么不同到时候在实际使用中再说 insert, update 和 delete与select差不多这里把几个不同的属性说一下: useGeneratedKeys （仅对 insert 和 update 有用）默认值为false，当为true时会从数据库中取出自动增长的主键值，并将值返回 keyProperty （仅对 insert 和 update 有用）MyBatis 会通过 getGeneratedKeys 的返回值或者通过 insert 语句的 selectKey 子元素设置它的键值 例：123456789101112&lt;?xml version="1.0" encoding="UTF-8" ?&gt;&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;&lt;mapper namespace="org.mybatis.example.BlogMapper"&gt; &lt;select id="selectUser" resultType="com.yhzl.bean.User"&gt; select * from User where id = #&#123;id&#125; &lt;/select&gt; &lt;insert id="insertUser" useGeneratedKeys="true" keyProperty="id"&gt; insert into User (username, password) values (#&#123;username&#125;, #&#123;password&#125;) &lt;/insert&gt;&lt;/mapper&gt; 12345678910111213141516171819202122232425262728293031323334package com.yhzl.test;import java.io.IOException;import java.io.InputStream;import org.apache.ibatis.io.Resources;import org.apache.ibatis.session.SqlSession;import org.apache.ibatis.session.SqlSessionFactory;import org.apache.ibatis.session.SqlSessionFactoryBuilder;import com.yhzl.bean.User;/** * @author chsm * @date 2018年4月4日上午8:33:13 * @version 1.0 */public class Test &#123; public static void main(String[] args) throws IOException &#123; InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml"); SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream); SqlSession session = sessionFactory.openSession(); User user2 = new User(); user2.setUsername("abcdefg"); user2.setPassword("abcdefg"); int i = session.insert("org.mybatis.example.BlogMapper.insertUser", user2); session.commit(); session.close(); //当设置useGeneratedKeys="true" keyProperty="id"时User有id值，若不设置则没有id值 System.out.println(user2); &#125; &#125; sql这个元素可以被用来定义可重用的 SQL 代码段，可以包含在其他语句中。它可以被静态地(在加载参数) 参数化. 不同的属性值通过包含的实例变化. 比如：1&lt;sql id="userColumns"&gt; $&#123;alias&#125;.id,$&#123;alias&#125;.username,$&#123;alias&#125;.password &lt;/sql&gt; 这个 SQL 片段可以被包含在其他语句中，例如：1234567&lt;select id="selectUsers" resultType="map"&gt; select &lt;include refid="userColumns"&gt;&lt;property name="alias" value="t1"/&gt;&lt;/include&gt;, &lt;include refid="userColumns"&gt;&lt;property name="alias" value="t2"/&gt;&lt;/include&gt; from some_table t1 cross join some_table t2&lt;/select&gt; SQL中也可以使用include，例如：1234567891011121314151617&lt;sql id="sometable"&gt; $&#123;prefix&#125;Table&lt;/sql&gt;&lt;sql id="someinclude"&gt; from &lt;include refid="$&#123;include_target&#125;"/&gt;&lt;/sql&gt;&lt;select id="select" resultType="map"&gt; select field1, field2, field3 &lt;include refid="someinclude"&gt; &lt;property name="prefix" value="Some"/&gt; &lt;property name="include_target" value="sometable"/&gt; &lt;/include&gt;&lt;/select&gt; 后面章节对于后面章节推荐大家前往官网观看附上链接：http://www.mybatis.org/mybatis-3/zh/sqlmap-xml.html#Parameters]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mybatis02--xml配置文件]]></title>
+    <url>%2F2018%2F04%2F04%2Fmybatis02%2F</url>
+    <content type="text"><![CDATA[properties可以用来设置属性1234&lt;properties resource="org/mybatis/example/config.properties"&gt; &lt;property name="username" value="dev_user"/&gt; &lt;property name="password" value="F2Fa3!33TYyg"/&gt;&lt;/properties&gt; 然后就可以使用配置的属性啦123456&lt;dataSource type="POOLED"&gt; &lt;property name="driver" value="$&#123;driver&#125;"/&gt; &lt;property name="url" value="$&#123;url&#125;"/&gt; &lt;property name="username" value="$&#123;username&#125;"/&gt; &lt;property name="password" value="$&#123;password&#125;"/&gt;&lt;/dataSource&gt; 当然properties也可以由java代码来配置12//传入MyBatis配置文件和属性配置文件SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, props); 如果三者混合使用会出现什么情况呢？这里引用MyBatis官方的解释 在 properties 元素体内指定的属性首先被读取。 然后根据 properties 元素中的 resource 属性读取类路径下属性文件或根据 url 属性指定的路径读取属性文件，并覆盖已读取的同名属性。 最后读取作为方法参数传递的属性，并覆盖已读取的同名属性。 简单的说就是java代码&gt;外部配置&gt;内部配置从MyBatis3.4.2开始可以为占位符指定默认值了，附上官方案例：1234&lt;dataSource type="POOLED"&gt; &lt;!-- 当username不存在时,值就会使用ut_user代替 --&gt; &lt;property name="username" value="$&#123;username:ut_user&#125;"/&gt;&lt;/dataSource&gt; 不过该特性默认情况下是关闭的需手动开启：123&lt;properties resource="org/mybatis/example/config.properties"&gt; &lt;property name="org.apache.ibatis.parsing.PropertyParser.enable-default-value" value="true"/&gt; &lt;!-- Enable this feature --&gt;&lt;/properties&gt; settings该属性比较多，在这里就不详述了，有需要的可以看官方文档:http://www.mybatis.org/mybatis-3/zh/configuration.html#settings typeAliases该属性用于给类设置别名例：12345678&lt;typeAliases&gt; &lt;typeAlias alias="Author" type="domain.blog.Author"/&gt; &lt;typeAlias alias="Blog" type="domain.blog.Blog"/&gt; &lt;typeAlias alias="Comment" type="domain.blog.Comment"/&gt; &lt;typeAlias alias="Post" type="domain.blog.Post"/&gt; &lt;typeAlias alias="Section" type="domain.blog.Section"/&gt; &lt;typeAlias alias="Tag" type="domain.blog.Tag"/&gt;&lt;/typeAliases&gt; 当需要使用某个类时就不需要写包名+类名啦，直接使用别名就可以了还可以指定包名，这样MyBatis就会扫描该包下的所有类，若没加注解标识则默认别名为类名小写123&lt;typeAliases&gt; &lt;package name="domain.blog"/&gt;&lt;/typeAliases&gt; 若有注解，则别名为注解所设定的值1234@Alias("Author")public class Author &#123; ...&#125; 对于typeHandlers、objectFactory、plugins这三个标签我们以后再分析 environments(配置环境)environment在MyBatis中允许配置多个环境例：123456789101112131415161718192021222324&lt;environments default="aaa"&gt; &lt;environment id="aaa"&gt; &lt;transactionManager type="JDBC"&gt; &lt;property name="..." value="..."/&gt; &lt;/transactionManager&gt; &lt;dataSource type="POOLED"&gt; &lt;property name="driver" value="$&#123;driver&#125;"/&gt; &lt;property name="url" value="$&#123;url&#125;"/&gt; &lt;property name="username" value="$&#123;username&#125;"/&gt; &lt;property name="password" value="$&#123;password&#125;"/&gt; &lt;/dataSource&gt; &lt;/environment&gt; &lt;environment id="bbb"&gt; &lt;transactionManager type="JDBC"&gt; &lt;property name="..." value="..."/&gt; &lt;/transactionManager&gt; &lt;dataSource type="POOLED"&gt; &lt;property name="driver" value="$&#123;driver&#125;"/&gt; &lt;property name="url" value="$&#123;url&#125;"/&gt; &lt;property name="username" value="$&#123;username&#125;"/&gt; &lt;property name="password" value="$&#123;password&#125;"/&gt; &lt;/dataSource&gt; &lt;/environment&gt;&lt;/environments&gt; environments中设置default代表默认选择的环境，如果要默认选择bbb把default改成bbb就好了在MyBatis中一个SqlSessionFactory只能与一个环境所绑定如果不希望MyBatis绑定默认环境可以使用12//传入参数为MyBatis配置和环境id 注：environment为String类型SqlSessionFactoryBuilder().build(reader, environment); transactionManager(事物管理器)MyBatis有两种事物管理器，也就是说transactionManager的type值不能随意写，它只有两个值那就是type=”[JDBC|MANAGED]”官方解释： JDBC – 这个配置就是直接使用了 JDBC 的提交和回滚设置，它依赖于从数据源得到的连接来管理事务作用域。 MANAGED – 这个配置几乎没做什么。它从来不提交或回滚一个连接，而是让容器来管理事务的整个生命周期（比如 JEE 应用服务器的上下文）。 默认情况下它会关闭连接，然而一些容器并不希望这样，因此需要将 closeConnection 属性设置为 false 来阻止它默认的关闭行为。例如:123&lt;transactionManager type="MANAGED"&gt; &lt;property name="closeConnection" value="false"/&gt;&lt;/transactionManager&gt; 一般情况下type值都是JDBC 注： 如果你正在使用 Spring + MyBatis，则没有必要配置事务管理器， 因为 Spring 模块会使用自带的管理器来覆盖前面的配置。 dataSource(数据源)type同样是一个枚举值,它的值可以为UNPOOLED、POOLED、JNDI，默认情况下写POOLED就好了关于三个枚举值的含义大家可以去官网查看，由于太长了在这里就不贴出来了。 mappers(映射器)在MyBatis中配置映射有四种方式：123456&lt;!-- 使用相对于类路径的资源引用 --&gt;&lt;mappers&gt; &lt;mapper resource="org/mybatis/builder/AuthorMapper.xml"/&gt; &lt;mapper resource="org/mybatis/builder/BlogMapper.xml"/&gt; &lt;mapper resource="org/mybatis/builder/PostMapper.xml"/&gt;&lt;/mappers&gt; 123456&lt;!-- 使用完全限定资源定位符（URL） --&gt;&lt;mappers&gt; &lt;mapper url="file:///var/mappers/AuthorMapper.xml"/&gt; &lt;mapper url="file:///var/mappers/BlogMapper.xml"/&gt; &lt;mapper url="file:///var/mappers/PostMapper.xml"/&gt;&lt;/mappers&gt; 123456&lt;!-- 使用映射器接口实现类的完全限定类名 --&gt;&lt;mappers&gt; &lt;mapper class="org.mybatis.builder.AuthorMapper"/&gt; &lt;mapper class="org.mybatis.builder.BlogMapper"/&gt; &lt;mapper class="org.mybatis.builder.PostMapper"/&gt;&lt;/mappers&gt; 1234&lt;!-- 将包内的映射器接口实现全部注册为映射器 --&gt;&lt;mappers&gt; &lt;package name="org.mybatis.builder"/&gt;&lt;/mappers&gt;]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mybatis01--初识MyBatis]]></title>
+    <url>%2F2018%2F04%2F03%2Fmybatis01%2F</url>
+    <content type="text"><![CDATA[近日要开始MyBatis的学习了，首先第一件事当然是看官方文档啦 附上官方文档http://www.mybatis.org/mybatis-3/zh/index.html 创建maven工程名称任意，创一个最简单的maven工程就好了 引入MyBatis在pom.xml中加入MyBatis依赖和数据库驱动，我这里用的是mysql1234567891011&lt;dependency&gt; &lt;groupId&gt;org.mybatis&lt;/groupId&gt; &lt;artifactId&gt;mybatis&lt;/artifactId&gt; &lt;version&gt;x.x.x&lt;/version&gt;&lt;/dependency&gt;&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;&lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;version&gt;5.1.46&lt;/version&gt;&lt;/dependency&gt; x.x.x填的是MyBatis的版本号，目前最新稳定版是3.4.6 编写配置文件由xml构建SqlSessionFactory,首先编写XML配置，以下所有中文均改成自己的配置1234567891011121314151617181920&lt;?xml version="1.0" encoding="UTF-8" ?&gt;&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;&lt;configuration&gt; &lt;environments default="development"&gt; &lt;environment id="development"&gt; &lt;transactionManager type="JDBC"/&gt; &lt;dataSource type="POOLED"&gt; &lt;property name="driver" value="数据库驱动"/&gt; &lt;property name="url" value="url地址"/&gt; &lt;property name="username" value="用户名"/&gt; &lt;property name="password" value="密码"/&gt; &lt;/dataSource&gt; &lt;/environment&gt; &lt;/environments&gt; &lt;mappers&gt; &lt;mapper resource="mapper路径"/&gt; &lt;/mappers&gt;&lt;/configuration&gt; 编写mapper配置文件：123456789&lt;?xml version="1.0" encoding="UTF-8" ?&gt;&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;&lt;mapper namespace="org.mybatis.example.BlogMapper"&gt; &lt;select id="selectUser" resultType="com.yhzl.bean.User"&gt; select * from User where id = #&#123;id&#125; &lt;/select&gt;&lt;/mapper&gt; 编写实体类及测试类实体类：1234567891011121314151617181920212223242526272829303132333435363738394041424344package com.yhzl.bean;/** * @author chsm * @date 2018年4月4日上午8:30:32 * @version 1.0 */public class User &#123; private Integer id; private String username; private String password; public Integer getId() &#123; return id; &#125; public void setId(Integer id) &#123; this.id = id; &#125; public String getUsername() &#123; return username; &#125; public void setUsername(String username) &#123; this.username = username; &#125; public String getPassword() &#123; return password; &#125; public void setPassword(String password) &#123; this.password = password; &#125; @Override public String toString() &#123; return "User [id=" + id + ", username=" + username + ", password=" + password + "]"; &#125;&#125; 测试类:12345678910111213141516171819202122232425262728package com.yhzl.test;import java.io.IOException;import java.io.InputStream;import org.apache.ibatis.io.Resources;import org.apache.ibatis.session.SqlSession;import org.apache.ibatis.session.SqlSessionFactory;import org.apache.ibatis.session.SqlSessionFactoryBuilder;import com.yhzl.bean.User;/** * @author chsm * @date 2018年4月4日上午8:33:13 * @version 1.0 */public class Test &#123; public static void main(String[] args) throws IOException &#123; InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml"); SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream); SqlSession session = sessionFactory.openSession(); User user = session.selectOne("org.mybatis.example.BlogMapper.selectUser", 1); System.out.println(user); &#125; &#125; 对代码的编写已经完成了此时可以运行了，如果出现报错等情况，请检查下代码看看有没有写错]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[team]]></title>
+    <url>%2F2018%2F04%2F03%2Fteam%2F</url>
+    <content type="text"><![CDATA[团队协作要求统一开发环境版本： eclipse4.7.3tomcat8.5java8(细节版本待定) 开发所需条件 1.下载并安装git2.注册github账号3.掌握git基本命令，能独立完成远程仓库的提交及clone4.掌握makedown基本语法，编写文档 开发注意事项 不得强制提交带有冲突的项目不得使用与团队不一致的开发环境每次提交需注明新增功能，，并更新md文件在md文件夹下新建人名.md,编写详细的更新文档 团队协作流程 1.组长分配任务并初始化项目提交至远程仓库2.组员从远程仓库clone项目导入eclipse进行开发3.每天21点前将代码提交至远程仓库4.每天24点前组长对项目进行整合纠错并提交至远程仓库 附录git官网github官网MarkDown文档git教程注: git教程无需完整看完掌握基本使用方法即可]]></content>
+      <categories>
+        <category>团队</category>
+      </categories>
+      <tags>
+        <tag>team</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Spring Boot(2)--spring boot集成swagger2]]></title>
+    <url>%2F2018%2F04%2F03%2Fspring-boot2%2F</url>
+    <content type="text"><![CDATA[swagger2是什么？简单来说swagger2是一个可以帮你更好的测试REST风格的API插件 什么是REST风格？传统的请求URL是http://www.test.com/getUser?userId=1REST风格的URL是http://www.test.com/getUser/1百度百科解释 环境Windows10 家庭版Spring Boot 2.0eclipse4.7.3jdk1.8 spring boot集成swagger2初始化项目此次初始化用到了Spring插件，没有插件的直接创建maven工程就好了首先右键新建项目选择other，然后找到Spring Boot下的Spring Starter Project,选中然后点击next点击next后请确保电脑网络异常，因为要通过网络加载配置name处可更改项目名称，在这里我就不改了，继续点击next然后选中以下几项，如果不需要数据库，可不勾选sql下的组件然后点击finish 添加swagger2依赖此时一个Spring Boot项目就算初始化成功了，这时候我们来配置pom.xml加入swagger2和swagger ui依赖123456789101112&lt;!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 --&gt;&lt;dependency&gt; &lt;groupId&gt;io.springfox&lt;/groupId&gt; &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt; &lt;version&gt;2.7.0&lt;/version&gt;&lt;/dependency&gt;&lt;!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui --&gt;&lt;dependency&gt; &lt;groupId&gt;io.springfox&lt;/groupId&gt; &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt; &lt;version&gt;2.7.0&lt;/version&gt;&lt;/dependency&gt; 编写实体类及配置信息现在我们来编写一个实体类User:12345678910111213141516171819202122232425package com.example.demo.bean;public class User &#123; private Integer id; private String username; private String password; public Integer getId() &#123; return id; &#125; public void setId(Integer id) &#123; this.id = id; &#125; public String getUsername() &#123; return username; &#125; public void setUsername(String username) &#123; this.username = username; &#125; public String getPassword() &#123; return password; &#125; public void setPassword(String password) &#123; this.password = password; &#125;&#125; 编写mapper:1234567891011121314package com.example.demo.mapper;import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.Select;import com.example.demo.bean.User;@Mapperpublic interface UserMapper &#123; @Select("SELECT * FROM User WHERE id=#&#123;id&#125;") User getUser(Integer id);&#125; 编写controller:123456789101112131415161718192021222324package com.example.demo.controller;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.stereotype.Controller;import org.springframework.web.bind.annotation.PathVariable;import org.springframework.web.bind.annotation.RequestMapping;import org.springframework.web.bind.annotation.ResponseBody;import com.example.demo.bean.User;import com.example.demo.mapper.UserMapper;@Controllerpublic class UserController &#123; @Autowired private UserMapper userMapper; @ResponseBody @RequestMapping("/user/&#123;id&#125;") public User getUser(@PathVariable("id") Integer id) &#123; return userMapper.getUser(id); &#125;&#125; 在resource的application.properties中加入数据库配置信息:123spring.datasource.url=数据库地址spring.datasource.username=数据库用户名spring.datasource.password=数据库密码 在测试类中添加一个@EnableSwagger2注解123456789101112131415package com.example.demo;import org.springframework.boot.SpringApplication;import org.springframework.boot.autoconfigure.SpringBootApplication;import springfox.documentation.swagger2.annotations.EnableSwagger2;@EnableSwagger2@SpringBootApplicationpublic class Demo1Application &#123; public static void main(String[] args) &#123; SpringApplication.run(Demo1Application.class, args); &#125;&#125; 启动Spring Boot验证是否成功启动Spring Boot然后访问localhost:8080/swagger-ui.html此时若出现以下画面即代表启动成功这时候我们可以测试下，点击user-controller然后再点击GET测试成功结果：]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>spring</tag>
+        <tag>spring boot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Spring Boot(1)--初识spring boot]]></title>
+    <url>%2F2018%2F04%2F02%2Fspring-boot1%2F</url>
+    <content type="text"><![CDATA[今天对着视频尝试着写了一下Spring Boot，下面说一下感受与问题 感受 不得不说Spring Boot真的是十分好用啊，总的来说就是配置简单， 启动快速， 极易上手 环境Windows10 家庭版Spring Boot 2.0eclipse4.7.3jdk1.8 配置首先新建一个maven工程，然后将以下几行代码复制到pom.xml中1234567891011&lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;2.0.0.RELEASE&lt;/version&gt;&lt;/parent&gt;&lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt;&lt;/dependencies&gt; 这时候maven基本就配置好了，接下来我们来写java代码，首先新建一个类名称任意，然后写一个main方法，如果安装了Spring插件的话，eclipse会有两个main方法提示这时候选第二个就好了对于没有安装插件的朋友只需要这样写main方法就好了,注意当中的SampleController.class,要改成类名.class123public static void main(String[] args) throws Exception &#123; SpringApplication.run(SampleController.class, args); &#125; 然后在类上加上@SpringBootApplication注解就好了，这个时候Spring Boot就可以跑起来了完整代码：123456@SpringBootApplicationpublic class SampleController &#123; public static void main(String[] args) throws Exception &#123; SpringApplication.run(SampleController.class, args); &#125;&#125; 然后我们就可以在浏览器输入localhost:8080访问了访问成功的页面是这样的：这时候我们就可以开始编写Controller，让Spring Boot显示出Hello Spring Boot了Controller的编写也很简单这里就直接附上代码了：12345678@Controllerpublic class HelloController &#123; @ResponseBody @RequestMapping("/hello") public String hello() &#123; return "Hello Spring Boot"; &#125;&#125; 这时候再重启服务器访问localhost:8080/hello浏览器就会显示Hello Spring Boot啦成功界面：当然大家也可以直接按照官方的例子，编写Spring Boot程序：123456789101112131415161718192021package hello;import org.springframework.boot.*;import org.springframework.boot.autoconfigure.*;import org.springframework.stereotype.*;import org.springframework.web.bind.annotation.*;@Controller@EnableAutoConfigurationpublic class SampleController &#123; @RequestMapping("/") @ResponseBody String home() &#123; return "Hello World!"; &#125; public static void main(String[] args) throws Exception &#123; SpringApplication.run(SampleController.class, args); &#125;&#125; 最后附上Spring Boot的官网和文档 Spring Boot官网：https://projects.spring.io/spring-boot/官方文档：https://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/htmlsingle/]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>spring</tag>
+        <tag>spring boot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello, Hexo]]></title>
+    <url>%2F2018%2F03%2F30%2F%E4%BD%A0%E5%A5%BD-Hexo%2F</url>
+    <content type="text"><![CDATA[刚搭建好博客，第一篇博客就说一下如何配置Hexo到GitHub吧！ 我的环境是Windows10 家庭版 64位 安装node.js和gitnode的安装说实话具体的安装步骤我已经忘了，因为很久前我就安装了，估计也就一直下一步就好了，在这里给出下载链接，如果安装过程中出现问题的话，请各位自行百度解决下 以下是安装成功的样子 git的安装git下载地址,我安装的时候是一直下一步就好了 安装成功后在空白处单击右键会出现以下两个图标 注册GitHub并新建项目注册没什么好说的直接到GitHub官网注册就好新建项目时注意项目名必须是用户名.github.io，否则可能会无法访问 安装Hexo在自己喜欢的地方创建文件夹，名称任意，用于存放Hexo，然后按住Shift + 鼠标右键会发现有个 单击它打开命令行窗口，输入 npm install hexo -g 开始安装Hexo 经过一段时间的等待，hexo就安装好了，此时可以输入 hexo -v 验证是否安装成功成功效果图： 然后输入 hexo init 开始初始化hexo，经过一段时间的等待，当看到Start blogging with Hexo！时，就代表初始化已经完成了，此时再输入 npm install 安装所需组件,安装完成后再输入 hexo g 然后输入 hexo s 开启服务，此时如果不出意外在浏览器输入localhost:4000就可以访问到首页了，然后hexo基本已经安装完毕了，下一步要开始上传到git了 配置git首先打开 Git Bash，设置用户名和邮箱 git config –global user.name “用户名”git config –global user.email “邮箱地址” 输入以下代码可查看配置信息 git config -l 完成后输入以下代码生成秘钥(输入后按下三次回车) ssh-keygen -t rsa -b 4096 -C “邮箱地址” 启动ssh-agent eval $(ssh-agent -s) 生成ssh key到ssh-agent ssh-add ~/.ssh/id_rsa 使用命令复制秘钥 clip &lt; ~/.ssh/id_rsa.pub 登录GitHub点击头像下的setting然后点击再点击将复制好的秘钥粘贴进去即可进去即可输入以下代码验证是否成功，若Hi后出现你的github名称，就代表秘钥添加成功 ssh -T git@github.com 配置hexo目录下的_config.yml ,deploy在文件的最下面1234deploy: type: git repository: 新建项目中的SSH branch: master 在此复制SSH地址，粘贴到repository中在命令行输入安装扩展 npm install hexo-deployer-git –save 完成后输入 hexo d -g 即可完成整个hexo的部署输入用户名.github.io即可访问]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F03%2F30%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
