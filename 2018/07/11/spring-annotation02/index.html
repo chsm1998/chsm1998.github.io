@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java,spring," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="一个小小的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="永恒之恋">
-<meta property="og:url" content="http://yoursite.com/tags/maven/index.html">
+<meta name="description" content="@ComponentScan@ComponentScan使用@Repeatable标识，在jdk1.8中可重复标注，在1.8以下版本中可使用@ComponentScans达到同样效果">
+<meta name="keywords" content="java,spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring注解开发之@ComponentScan">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/spring-annotation02/index.html">
 <meta property="og:site_name" content="永恒之恋">
-<meta property="og:description" content="一个小小的个人博客">
+<meta property="og:description" content="@ComponentScan@ComponentScan使用@Repeatable标识，在jdk1.8中可重复标注，在1.8以下版本中可使用@ComponentScans达到同样效果">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-11T00:17:36.186Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="永恒之恋">
-<meta name="twitter:description" content="一个小小的个人博客">
+<meta name="twitter:title" content="spring注解开发之@ComponentScan">
+<meta name="twitter:description" content="@ComponentScan@ComponentScan使用@Repeatable标识，在jdk1.8中可重复标注，在1.8以下版本中可使用@ComponentScans达到同样效果">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/maven/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/11/spring-annotation02/"/>
 
 
 
 
 
-  <title>标签: maven | 永恒之恋</title>
+  <title>spring注解开发之@ComponentScan | 永恒之恋</title>
   
 
 
@@ -153,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,54 +283,247 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>maven<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/spring-annotation02/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="永恒之恋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="永恒之恋">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/27/maven/" itemprop="url">
-              
-                <span itemprop="name">maven</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">spring注解开发之@ComponentScan</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-27T14:17:01+08:00"
-              content="2018-05-27" >
-          05-27
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T07:42:13+08:00">
+                2018-07-11
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-11T08:17:36+08:00">
+                2018-07-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/框架/" itemprop="url" rel="index">
+                    <span itemprop="name">框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/11/spring-annotation02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/11/spring-annotation02/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h2><p>@ComponentScan使用@Repeatable标识，在jdk1.8中可重复标注，在1.8以下版本中可使用@ComponentScans达到同样效果</p>
+<a id="more"></a>
+<h3 id="value"><a href="#value" class="headerlink" title="value"></a>value</h3><p>@ComponentScan  value:指定要扫描的包</p>
+<blockquote>
+<p>例：@ComponentScan(value = “com.yhzl”)</p>
+</blockquote>
+<h3 id="excludeFilters和includeFilters"><a href="#excludeFilters和includeFilters" class="headerlink" title="excludeFilters和includeFilters"></a>excludeFilters和includeFilters</h3><p>excludeFilters = Filter[] ：指定扫描的时候按照什么规则排除那些组件<br>includeFilters = Filter[] ：指定扫描的时候只需要包含哪些组件</p>
+<blockquote>
+<p>例：includeFilters = { @Filter(type = FilterType.ANNOTATION, classes = { Controller.class }) }</p>
+</blockquote>
+<h4 id="参数type"><a href="#参数type" class="headerlink" title="参数type"></a>参数type</h4><p>FilterType.ANNOTATION：按照注解<br>FilterType.ASSIGNABLE_TYPE：按照给定的类型<br>FilterType.ASPECTJ：使用ASPECTJ表达式<br>FilterType.REGEX：使用正则指定<br>FilterType.CUSTOM：使用自定义规则</p>
+<h3 id="自定义过滤规则"><a href="#自定义过滤规则" class="headerlink" title="自定义过滤规则"></a>自定义过滤规则</h3><p>自定义过滤规则需要实现TypeFilter接口<br>首先在配置类的excludeFilters或includeFilters中标注</p>
+<blockquote>
+<p>@Filter(type=FilterType.CUSTOM,classes={类名.class})</p>
+</blockquote>
+<p>实现TypeFilter接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yhzl.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.core.io.Resource;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.AnnotationMetadata;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.ClassMetadata;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.classreading.MetadataReader;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.classreading.MetadataReaderFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.filter.TypeFilter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTypeFilter</span> <span class="keyword">implements</span> <span class="title">TypeFilter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * metadataReader：读取到的当前正在扫描的类的信息</span></span><br><span class="line"><span class="comment">	 * metadataReaderFactory:可以获取到其他任何类信息的</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">match</span><span class="params">(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="comment">//获取当前类注解的信息</span></span><br><span class="line">		AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();</span><br><span class="line">		<span class="comment">//获取当前正在扫描的类的类信息</span></span><br><span class="line">		ClassMetadata classMetadata = metadataReader.getClassMetadata();</span><br><span class="line">		<span class="comment">//获取当前类资源（类的路径）</span></span><br><span class="line">		Resource resource = metadataReader.getResource();</span><br><span class="line">		<span class="comment">//获取类名</span></span><br><span class="line">		String className = classMetadata.getClassName();</span><br><span class="line">		System.out.println(<span class="string">"---&gt;"</span>+className);</span><br><span class="line">		<span class="keyword">if</span>(className.contains(<span class="string">"er"</span>))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/10/spring-annotation01/" rel="next" title="spring注解开发-Hello World">
+                <i class="fa fa-chevron-left"></i> spring注解开发-Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -336,6 +531,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -356,8 +565,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -427,6 +645,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ComponentScan"><span class="nav-number">1.</span> <span class="nav-text">@ComponentScan</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#value"><span class="nav-number">1.1.</span> <span class="nav-text">value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#excludeFilters和includeFilters"><span class="nav-number">1.2.</span> <span class="nav-text">excludeFilters和includeFilters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数type"><span class="nav-number">1.2.1.</span> <span class="nav-text">参数type</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义过滤规则"><span class="nav-number">1.3.</span> <span class="nav-text">自定义过滤规则</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -554,6 +788,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -571,6 +809,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/07/11/spring-annotation02/';
+          this.page.identifier = '2018/07/11/spring-annotation02/';
+          this.page.title = 'spring注解开发之@ComponentScan';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
