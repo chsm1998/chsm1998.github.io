@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[学习docker中遇到的问题]]></title>
+    <url>%2F2018%2F08%2F03%2Fdocker-error%2F</url>
+    <content type="text"><![CDATA[yaml: line 1: mapping values are not allowed in this context按照官网入门教程的第三部分执行到docker stack deploy -c docker-compose.yml getstartedlab，会出现这个错误，那是因为yaml的语法格式有问题，部分地方少了空格补上就好。yml在线错误校验https://www.bejson.com/validators/yaml/参考博客：https://blog.csdn.net/kuangay/article/details/80662914]]></content>
+      <categories>
+        <category>容器</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux-java-install]]></title>
+    <url>%2F2018%2F07%2F16%2Flinux-java-install%2F</url>
+    <content type="text"><![CDATA[Linux下java的安装基本环境Linux: CentOS Linux release 7.5.1804 (Core)Java: java version “10.0.1” 下载java首先进入oracle官网找到你需要下载的java版本:http://www.oracle.com/technetwork/java/javase/downloads/index.html我这里一jdk10为例，在linux下执行以下命令即可下载: wget http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz 如果提示wget未找到命令则执行: yum install wget -ywget http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz 解压javatar xzvf jdk-10.0.1_linux-x64_bin.tar.gz 配置环境变量打开profile vi /etc/profile 按i编辑,在文件末尾加上 export JAVA_HOME=jdk-10.0.1export PATH=$JAVA_HOME/bin:$PATH 首先按esc退出insert模式，然后输入##:wq##保存文件最后执行: source /etc/profile 测试配置是否生效输入: java -version 输出： [root@localhost /]# java -versionjava version “10.0.1” 2018-04-17Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)]]></content>
+      <tags>
+        <tag>linux</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[spring注解-注册bean的几种方式]]></title>
     <url>%2F2018%2F07%2F11%2Fspring-annotation03%2F</url>
     <content type="text"><![CDATA[前言在spring中注册bean有多种方式： 包扫描+组件标注注解（@Controller/@Service/@Repository/@Component）[自己写的类] @Bean[导入的第三方包里面的组件] @Import[快速给容器中导入一个组件] @Import(要导入到容器中的组件)；容器中就会自动注册这个组件，id默认是全类名 ImportSelector:返回需要导入的组件的全类名数组； ImportBeanDefinitionRegistrar:手动注册bean到容器中 使用Spring提供的 FactoryBean（工厂Bean）; 默认获取到的是工厂bean调用getObject创建的对象 要获取工厂Bean本身，我们需要给id前面加一个&amp; 包扫描与@Bean注解前面章节中已经提过不再概述 @Import注解基本使用@Import( {类名.class} )例：@Import( {Color.class,Red.class} ) ImportSelectorImportSelector是@Import的一个参数，该注解在spring boot中大量使用，使用ImportSelector，首先要实现ImportSelector接口1234567891011121314//自定义逻辑返回需要导入的组件public class MyImportSelector implements ImportSelector &#123; //返回值，就是到导入到容器中的组件全类名 //AnnotationMetadata:当前标注@Import注解的类的所有注解信息 @Override public String[] selectImports(AnnotationMetadata importingClassMetadata) &#123; // TODO Auto-generated method stub //importingClassMetadata //方法不要返回null值 return new String[]&#123;"com.yhzl.bean.Blue","com.yhzl.bean.Yellow"&#125;; &#125;&#125; 使用方法： @Import( {MyImportSelector.class} ) ImportBeanDefinitionRegistrar实现ImportBeanDefinitionRegistrar接口：1234567891011121314151617181920212223public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar &#123; /** * AnnotationMetadata：当前类的注解信息 * BeanDefinitionRegistry:BeanDefinition注册类； * 把所有需要添加到容器中的bean；调用 * BeanDefinitionRegistry.registerBeanDefinition手工注册进来 */ @Override public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) &#123; boolean definition = registry.containsBeanDefinition("com.yhzl.bean.Red"); boolean definition2 = registry.containsBeanDefinition("com.yhzl.bean.Blue"); //当Red和Blue都被spring注册时，将注册RainBow if(definition &amp;&amp; definition2)&#123; //指定Bean定义信息；（Bean的类型，Bean。。。） RootBeanDefinition beanDefinition = new RootBeanDefinition(RainBow.class); //注册一个Bean，指定bean名 registry.registerBeanDefinition("rainBow", beanDefinition); &#125; &#125;&#125; 使用方法： @Import( {MyImportBeanDefinitionRegistrar.class} ) FactoryBean使用FactoryBean，首先要实现spring的org.springframework.beans.factory.FactoryBean接口12345678910111213141516171819202122232425262728293031package com.atguigu.bean;import org.springframework.beans.factory.FactoryBean;//创建一个Spring定义的FactoryBeanpublic class ColorFactoryBean implements FactoryBean&lt;Color&gt; &#123; //返回一个Color对象，这个对象会添加到容器中 @Override public Color getObject() throws Exception &#123; // TODO Auto-generated method stub System.out.println("ColorFactoryBean...getObject..."); return new Color(); &#125; @Override public Class&lt;?&gt; getObjectType() &#123; // TODO Auto-generated method stub return Color.class; &#125; //是单例？ //true：这个bean是单实例，在容器中保存一份 //false：多实例，每次获取都会创建一个新的bean； @Override public boolean isSingleton() &#123; // TODO Auto-generated method stub return false; &#125;&#125; 配置类：123456// 注：该方法返回的的是FactoryBean的getObject()方法所返回的对象，并发工厂本身// 若有想获取工厂本身在获取时需要加上&amp;@Beanpublic ColorFactoryBean colorFactoryBean()&#123; return new ColorFactoryBean();&#125;]]></content>
@@ -67,6 +87,7 @@
         <category>数据库</category>
       </categories>
       <tags>
+        <tag>linux</tag>
         <tag>nosql</tag>
         <tag>redis</tag>
       </tags>
