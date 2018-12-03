@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java,spring," />
+  <meta name="keywords" content="Hexo," />
 
 
 
@@ -79,18 +79,27 @@
 
 
 
-<meta name="description" content="前言在spring中注册bean有多种方式：">
-<meta name="keywords" content="java,spring">
+<meta name="description" content="刚搭建好博客，第一篇博客就说一下如何配置Hexo到GitHub吧！  我的环境是Windows10 家庭版 64位">
+<meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring注解-注册bean的几种方式">
-<meta property="og:url" content="http://yoursite.com/2018/07/11/spring-annotation03/index.html">
+<meta property="og:title" content="Hello, Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/03/30/hello-Hexo/index.html">
 <meta property="og:site_name" content="永恒之恋">
-<meta property="og:description" content="前言在spring中注册bean有多种方式：">
+<meta property="og:description" content="刚搭建好博客，第一篇博客就说一下如何配置Hexo到GitHub吧！  我的环境是Windows10 家庭版 64位">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-21T01:01:05.349Z">
+<meta property="og:image" content="http://yoursite.com/images/node.png">
+<meta property="og:image" content="http://yoursite.com/images/git.png">
+<meta property="og:image" content="http://yoursite.com/images/window.png">
+<meta property="og:image" content="http://yoursite.com/images/hexo-v.png">
+<meta property="og:image" content="http://yoursite.com/images/git1.png">
+<meta property="og:image" content="http://yoursite.com/images/git2.png">
+<meta property="og:image" content="http://yoursite.com/images/git3.png">
+<meta property="og:image" content="http://yoursite.com/images/git4.png">
+<meta property="og:updated_time" content="2018-09-21T00:58:34.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring注解-注册bean的几种方式">
-<meta name="twitter:description" content="前言在spring中注册bean有多种方式：">
+<meta name="twitter:title" content="Hello, Hexo">
+<meta name="twitter:description" content="刚搭建好博客，第一篇博客就说一下如何配置Hexo到GitHub吧！  我的环境是Windows10 家庭版 64位">
+<meta name="twitter:image" content="http://yoursite.com/images/node.png">
 
 
 
@@ -120,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/11/spring-annotation03/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/30/hello-Hexo/"/>
 
 
 
 
 
-  <title>spring注解-注册bean的几种方式 | 永恒之恋</title>
+  <title>Hello, Hexo | 永恒之恋</title>
   
 
 
@@ -297,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/spring-annotation03/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/hello-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="永恒之恋">
@@ -314,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring注解-注册bean的几种方式</h1>
+          <h1 class="post-title" itemprop="name headline">Hello, Hexo</h1>
         
 
         <div class="post-meta">
@@ -326,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T20:50:58+08:00">
-                2018-07-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T10:33:36+08:00">
+                2018-03-30
               </time>
             
 
@@ -342,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-21T09:01:05+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-21T08:58:34+08:00">
                 2018-09-21
               </time>
             
@@ -361,8 +370,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/框架/" itemprop="url" rel="index">
-                    <span itemprop="name">框架</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -379,9 +388,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/11/spring-annotation03/#comments" itemprop="discussionUrl">
+                <a href="/2018/03/30/hello-Hexo/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/07/11/spring-annotation03/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/03/30/hello-Hexo/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,38 +418,89 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在spring中注册bean有多种方式：<br><a id="more"></a></p>
-<ol>
-<li>包扫描+组件标注注解（@Controller/@Service/@Repository/@Component）[自己写的类]</li>
-<li>@Bean[导入的第三方包里面的组件]</li>
-<li>@Import[快速给容器中导入一个组件]<ol>
-<li>@Import(要导入到容器中的组件)；容器中就会自动注册这个组件，id默认是全类名</li>
-<li>ImportSelector:返回需要导入的组件的全类名数组；</li>
-<li>ImportBeanDefinitionRegistrar:手动注册bean到容器中</li>
-</ol>
-</li>
-<li>使用Spring提供的 FactoryBean（工厂Bean）;<ol>
-<li>默认获取到的是工厂bean调用getObject创建的对象</li>
-<li>要获取工厂Bean本身，我们需要给id前面加一个&amp;</li>
-</ol>
-</li>
-</ol>
+        <p>刚搭建好博客，第一篇博客就说一下如何配置Hexo到GitHub吧！</p>
 <blockquote>
-<p>包扫描与@Bean注解前面章节中已经提过不再概述</p>
+<p>我的环境是Windows10 家庭版 64位</p>
 </blockquote>
-<h2 id="Import注解"><a href="#Import注解" class="headerlink" title="@Import注解"></a>@Import注解</h2><h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>@Import( {类名.class} )<br>例：@Import( {Color.class,Red.class} )</p>
-<h3 id="ImportSelector"><a href="#ImportSelector" class="headerlink" title="ImportSelector"></a>ImportSelector</h3><p>ImportSelector是@Import的一个参数，该注解在spring boot中大量使用，使用ImportSelector，首先要实现ImportSelector接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义逻辑返回需要导入的组件</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyImportSelector</span> <span class="keyword">implements</span> <span class="title">ImportSelector</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//返回值，就是到导入到容器中的组件全类名</span></span><br><span class="line">	<span class="comment">//AnnotationMetadata:当前标注@Import注解的类的所有注解信息</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> String[] selectImports(AnnotationMetadata importingClassMetadata) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="comment">//importingClassMetadata</span></span><br><span class="line">		<span class="comment">//方法不要返回null值</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> String[]&#123;<span class="string">"com.yhzl.bean.Blue"</span>,<span class="string">"com.yhzl.bean.Yellow"</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用方法：</p>
+<a id="more"></a>
+<h2 id="安装node-js和git"><a href="#安装node-js和git" class="headerlink" title="安装node.js和git"></a>安装node.js和git</h2><h3 id="node的安装"><a href="#node的安装" class="headerlink" title="node的安装"></a>node的安装</h3><p>说实话具体的安装步骤我已经忘了，因为很久前我就安装了，估计也就一直下一步就好了，在这里给出<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">下载链接</a>，如果安装过程中出现问题的话，请各位自行百度解决下</p>
 <blockquote>
-<p>@Import( {MyImportSelector.class} )</p>
+<p>以下是安装成功的样子</p>
 </blockquote>
-<h3 id="ImportBeanDefinitionRegistrar"><a href="#ImportBeanDefinitionRegistrar" class="headerlink" title="ImportBeanDefinitionRegistrar"></a>ImportBeanDefinitionRegistrar</h3><p>实现ImportBeanDefinitionRegistrar接口：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyImportBeanDefinitionRegistrar</span> <span class="keyword">implements</span> <span class="title">ImportBeanDefinitionRegistrar</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * AnnotationMetadata：当前类的注解信息</span></span><br><span class="line"><span class="comment">	 * BeanDefinitionRegistry:BeanDefinition注册类；</span></span><br><span class="line"><span class="comment">	 * 		把所有需要添加到容器中的bean；调用</span></span><br><span class="line"><span class="comment">	 * 		BeanDefinitionRegistry.registerBeanDefinition手工注册进来</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">boolean</span> definition = registry.containsBeanDefinition(<span class="string">"com.yhzl.bean.Red"</span>);</span><br><span class="line">		<span class="keyword">boolean</span> definition2 = registry.containsBeanDefinition(<span class="string">"com.yhzl.bean.Blue"</span>);</span><br><span class="line">		<span class="comment">//当Red和Blue都被spring注册时，将注册RainBow</span></span><br><span class="line">		<span class="keyword">if</span>(definition &amp;&amp; definition2)&#123;</span><br><span class="line">			<span class="comment">//指定Bean定义信息；（Bean的类型，Bean。。。）</span></span><br><span class="line">			RootBeanDefinition beanDefinition = <span class="keyword">new</span> RootBeanDefinition(RainBow.class);</span><br><span class="line">			<span class="comment">//注册一个Bean，指定bean名</span></span><br><span class="line">			registry.registerBeanDefinition(<span class="string">"rainBow"</span>, beanDefinition);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用方法：</p>
+<p><img src="\images\node.png" alt="node版本信息"></p>
+<h3 id="git的安装"><a href="#git的安装" class="headerlink" title="git的安装"></a>git的安装</h3><p>git<a href="https://git-scm.com/" target="_blank" rel="noopener">下载地址</a>,我安装的时候是一直下一步就好了</p>
 <blockquote>
-<p>@Import( {MyImportBeanDefinitionRegistrar.class} )</p>
+<p>安装成功后在空白处单击右键会出现以下两个图标</p>
 </blockquote>
-<h2 id="FactoryBean"><a href="#FactoryBean" class="headerlink" title="FactoryBean"></a>FactoryBean</h2><p>使用FactoryBean，首先要实现spring的<strong>org.springframework.beans.factory.FactoryBean</strong>接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.bean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.FactoryBean;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个Spring定义的FactoryBean</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ColorFactoryBean</span> <span class="keyword">implements</span> <span class="title">FactoryBean</span>&lt;<span class="title">Color</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//返回一个Color对象，这个对象会添加到容器中</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Color <span class="title">getObject</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"ColorFactoryBean...getObject..."</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Color();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> Color.class;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//是单例？</span></span><br><span class="line">	<span class="comment">//true：这个bean是单实例，在容器中保存一份</span></span><br><span class="line">	<span class="comment">//false：多实例，每次获取都会创建一个新的bean；</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>配置类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注：该方法返回的的是FactoryBean的getObject()方法所返回的对象，并发工厂本身</span></span><br><span class="line"><span class="comment">// 若有想获取工厂本身在获取时需要加上&amp;</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ColorFactoryBean <span class="title">colorFactoryBean</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> ColorFactoryBean();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="\images\git.png" alt="git版本信息"></p>
+<h2 id="注册GitHub并新建项目"><a href="#注册GitHub并新建项目" class="headerlink" title="注册GitHub并新建项目"></a>注册GitHub并新建项目</h2><p>注册没什么好说的直接到<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>官网注册就好<br>新建项目时注意项目名必须<strong>是用户名.github.io</strong>，否则可能会无法访问</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>在自己喜欢的地方创建文件夹，名称任意，用于存放Hexo，然后按住<strong>Shift + 鼠标右键</strong>会发现有个</p>
+<p><img src="\images\window.png" alt="shell"></p>
+<p>单击它打开命令行窗口，输入</p>
+<blockquote>
+<p>npm install hexo -g</p>
+</blockquote>
+<p> 开始安装Hexo</p>
+<p>经过一段时间的等待，hexo就安装好了，此时可以输入</p>
+<blockquote>
+<p>hexo -v</p>
+</blockquote>
+<p>验证是否安装成功<br>成功效果图：<br><img src="\images\hexo-v.png" alt="hexo-v"></p>
+<p>然后输入</p>
+<blockquote>
+<p>hexo init</p>
+</blockquote>
+<p>开始初始化hexo，经过一段时间的等待，当看到<strong>Start blogging with Hexo！</strong>时，就代表初始化已经完成了，此时再输入</p>
+<blockquote>
+<p>npm install</p>
+</blockquote>
+<p>安装所需组件,安装完成后再输入</p>
+<blockquote>
+<p>hexo g</p>
+</blockquote>
+<p>然后输入</p>
+<blockquote>
+<p>hexo s</p>
+</blockquote>
+<p>开启服务，此时如果不出意外在浏览器输入localhost:4000就可以访问到首页了，然后hexo基本已经安装完毕了，下一步要开始上传到git了</p>
+<h2 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h2><p>首先打开 Git Bash，设置用户名和邮箱</p>
+<blockquote>
+<p>git config –global user.name “用户名”<br>git config –global user.email “邮箱地址”</p>
+</blockquote>
+<p>输入以下代码可查看配置信息</p>
+<blockquote>
+<p>git config -l</p>
+</blockquote>
+<p>完成后输入以下代码生成秘钥<strong>(输入后按下三次回车)</strong></p>
+<blockquote>
+<p>ssh-keygen -t rsa -b 4096 -C “邮箱地址”</p>
+</blockquote>
+<p>启动ssh-agent</p>
+<blockquote>
+<p>eval $(ssh-agent -s)</p>
+</blockquote>
+<p>生成ssh key到ssh-agent</p>
+<blockquote>
+<p>ssh-add ~/.ssh/id_rsa</p>
+</blockquote>
+<p>使用命令复制秘钥</p>
+<blockquote>
+<p>clip &lt; ~/.ssh/id_rsa.pub</p>
+</blockquote>
+<p>登录GitHub点击头像下的setting<br><img src="\images\git1.png" alt="settig"><br>然后点击<br><img src="\images\git2.png" alt="ssh"><br>再点击<br><img src="\images\git3.png" alt="new"><br>将复制好的秘钥粘贴进去即可进去即可<br>输入以下代码验证是否成功，若Hi后出现你的github名称，就代表秘钥添加成功</p>
+<blockquote>
+<p>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+</blockquote>
+<p>配置hexo目录下的_config.yml ,deploy在文件的最下面<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">新建项目中的SSH</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
+<p>在此复制SSH地址，粘贴到repository中<br><img src="\images\git4.png" alt="ssh"><br>在命令行输入安装扩展</p>
+<blockquote>
+<p>npm install hexo-deployer-git –save</p>
+</blockquote>
+<p>完成后输入</p>
+<blockquote>
+<p>hexo d -g</p>
+</blockquote>
+<p>即可完成整个hexo的部署<br>输入<strong>用户名.github.io</strong>即可访问</p>
 
       
     </div>
@@ -458,9 +518,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
-          
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           
         </div>
       
@@ -473,8 +531,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/11/spring-annotation02/" rel="next" title="spring注解(1)">
-                <i class="fa fa-chevron-left"></i> spring注解(1)
+              <a href="/2018/03/30/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -483,8 +541,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/16/linux-java-install/" rel="prev" title="linux下java的安装">
-                linux下java的安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/02/spring-boot1/" rel="prev" title="Spring Boot(1)--初识spring boot">
+                Spring Boot(1)--初识spring boot <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -675,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Import注解"><span class="nav-number">2.</span> <span class="nav-text">@Import注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本使用"><span class="nav-number">2.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImportSelector"><span class="nav-number">2.2.</span> <span class="nav-text">ImportSelector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImportBeanDefinitionRegistrar"><span class="nav-number">2.3.</span> <span class="nav-text">ImportBeanDefinitionRegistrar</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FactoryBean"><span class="nav-number">3.</span> <span class="nav-text">FactoryBean</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装node-js和git"><span class="nav-number">1.</span> <span class="nav-text">安装node.js和git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#node的安装"><span class="nav-number">1.1.</span> <span class="nav-text">node的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git的安装"><span class="nav-number">1.2.</span> <span class="nav-text">git的安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册GitHub并新建项目"><span class="nav-number">2.</span> <span class="nav-text">注册GitHub并新建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">3.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置git"><span class="nav-number">4.</span> <span class="nav-text">配置git</span></a></li></ol></div>
             
 
           </div>
@@ -832,9 +890,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/07/11/spring-annotation03/';
-          this.page.identifier = '2018/07/11/spring-annotation03/';
-          this.page.title = 'spring注解-注册bean的几种方式';
+          this.page.url = 'http://yoursite.com/2018/03/30/hello-Hexo/';
+          this.page.identifier = '2018/03/30/hello-Hexo/';
+          this.page.title = 'Hello, Hexo';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';

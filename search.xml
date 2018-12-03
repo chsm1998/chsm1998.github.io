@@ -12,7 +12,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[linux-java-install]]></title>
+    <title><![CDATA[linux下java的安装]]></title>
     <url>%2F2018%2F07%2F16%2Flinux-java-install%2F</url>
     <content type="text"><![CDATA[Linux下java的安装基本环境Linux: CentOS Linux release 7.5.1804 (Core)Java: java version “10.0.1” 下载java首先进入oracle官网找到你需要下载的java版本:http://www.oracle.com/technetwork/java/javase/downloads/index.html我这里一jdk10为例，在linux下执行以下命令即可下载: wget http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz 如果提示wget未找到命令则执行: yum install wget -ywget http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz 解压javatar xzvf jdk-10.0.1_linux-x64_bin.tar.gz 配置环境变量打开profile vi /etc/profile 按i编辑,在文件末尾加上 export JAVA_HOME=jdk-10.0.1export PATH=$JAVA_HOME/bin:$PATH 首先按esc退出insert模式，然后输入##:wq##保存文件最后执行: source /etc/profile 测试配置是否生效输入: java -version 输出： [root@localhost /]# java -versionjava version “10.0.1” 2018-04-17Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)]]></content>
       <tags>
@@ -215,7 +215,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hello, Hexo]]></title>
-    <url>%2F2018%2F03%2F30%2F%E4%BD%A0%E5%A5%BD-Hexo%2F</url>
+    <url>%2F2018%2F03%2F30%2Fhello-Hexo%2F</url>
     <content type="text"><![CDATA[刚搭建好博客，第一篇博客就说一下如何配置Hexo到GitHub吧！ 我的环境是Windows10 家庭版 64位 安装node.js和gitnode的安装说实话具体的安装步骤我已经忘了，因为很久前我就安装了，估计也就一直下一步就好了，在这里给出下载链接，如果安装过程中出现问题的话，请各位自行百度解决下 以下是安装成功的样子 git的安装git下载地址,我安装的时候是一直下一步就好了 安装成功后在空白处单击右键会出现以下两个图标 注册GitHub并新建项目注册没什么好说的直接到GitHub官网注册就好新建项目时注意项目名必须是用户名.github.io，否则可能会无法访问 安装Hexo在自己喜欢的地方创建文件夹，名称任意，用于存放Hexo，然后按住Shift + 鼠标右键会发现有个 单击它打开命令行窗口，输入 npm install hexo -g 开始安装Hexo 经过一段时间的等待，hexo就安装好了，此时可以输入 hexo -v 验证是否安装成功成功效果图： 然后输入 hexo init 开始初始化hexo，经过一段时间的等待，当看到Start blogging with Hexo！时，就代表初始化已经完成了，此时再输入 npm install 安装所需组件,安装完成后再输入 hexo g 然后输入 hexo s 开启服务，此时如果不出意外在浏览器输入localhost:4000就可以访问到首页了，然后hexo基本已经安装完毕了，下一步要开始上传到git了 配置git首先打开 Git Bash，设置用户名和邮箱 git config –global user.name “用户名”git config –global user.email “邮箱地址” 输入以下代码可查看配置信息 git config -l 完成后输入以下代码生成秘钥(输入后按下三次回车) ssh-keygen -t rsa -b 4096 -C “邮箱地址” 启动ssh-agent eval $(ssh-agent -s) 生成ssh key到ssh-agent ssh-add ~/.ssh/id_rsa 使用命令复制秘钥 clip &lt; ~/.ssh/id_rsa.pub 登录GitHub点击头像下的setting然后点击再点击将复制好的秘钥粘贴进去即可进去即可输入以下代码验证是否成功，若Hi后出现你的github名称，就代表秘钥添加成功 ssh -T git@github.com 配置hexo目录下的_config.yml ,deploy在文件的最下面1234deploy: type: git repository: 新建项目中的SSH branch: master 在此复制SSH地址，粘贴到repository中在命令行输入安装扩展 npm install hexo-deployer-git –save 完成后输入 hexo d -g 即可完成整个hexo的部署输入用户名.github.io即可访问]]></content>
       <categories>
         <category>工具</category>
