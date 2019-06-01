@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java,socket,TCP," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="一个小小的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="永恒之恋">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta name="description" content="学习socket的起因原因就是工作中有个项目要用到socket，第一次听到socket这个词的时候一脸懵逼，java中还有这玩意？不都是SSM一套用HTTP请求吗？怎么还有socket这个玩意？">
+<meta name="keywords" content="java,socket,TCP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java中的socket(01)">
+<meta property="og:url" content="http://yoursite.com/2019/06/01/java-socket-01/index.html">
 <meta property="og:site_name" content="永恒之恋">
-<meta property="og:description" content="一个小小的个人博客">
+<meta property="og:description" content="学习socket的起因原因就是工作中有个项目要用到socket，第一次听到socket这个词的时候一脸懵逼，java中还有这玩意？不都是SSM一套用HTTP请求吗？怎么还有socket这个玩意？">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-01T08:07:07.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="永恒之恋">
-<meta name="twitter:description" content="一个小小的个人博客">
+<meta name="twitter:title" content="java中的socket(01)">
+<meta name="twitter:description" content="学习socket的起因原因就是工作中有个项目要用到socket，第一次听到socket这个词的时候一脸懵逼，java中还有这玩意？不都是SSM一套用HTTP请求吗？怎么还有socket这个玩意？">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/3/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/06/01/java-socket-01/"/>
 
 
 
 
 
-  <title>永恒之恋</title>
+  <title>java中的socket(01) | 永恒之恋</title>
   
 
 
@@ -153,8 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,9 +282,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -296,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/03/spring-boot2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/java-socket-01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="永恒之恋">
@@ -313,9 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/03/spring-boot2/" itemprop="url">Spring Boot(2)--spring boot集成swagger2</a></h1>
+          <h1 class="post-title" itemprop="name headline">java中的socket(01)</h1>
         
 
         <div class="post-meta">
@@ -327,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T09:09:05+08:00">
-                2018-04-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T15:29:47+08:00">
+                2019-06-01
               </time>
             
 
@@ -343,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-03T22:32:25+08:00">
-                2018-04-03
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-01T16:07:07+08:00">
+                2019-06-01
               </time>
             
           </span>
@@ -362,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/框架/" itemprop="url" rel="index">
-                    <span itemprop="name">框架</span>
+                  <a href="/categories/其他/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
                   </a>
                 </span>
 
@@ -380,9 +379,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/03/spring-boot2/#comments" itemprop="discussionUrl">
+                <a href="/2019/06/01/java-socket-01/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/04/03/spring-boot2/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/06/01/java-socket-01/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -410,360 +409,24 @@
       
 
       
-        
-          <h2 id="swagger2是什么？"><a href="#swagger2是什么？" class="headerlink" title="swagger2是什么？"></a>swagger2是什么？</h2><p>简单来说swagger2是一个可以帮你更好的测试REST风格的API插件<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/03/spring-boot2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/spring-boot1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="永恒之恋">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="永恒之恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/02/spring-boot1/" itemprop="url">Spring Boot(1)--初识spring boot</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T21:41:14+08:00">
-                2018-04-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-03T09:22:26+08:00">
-                2018-04-03
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/框架/" itemprop="url" rel="index">
-                    <span itemprop="name">框架</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/04/02/spring-boot1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/04/02/spring-boot1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天对着视频尝试着写了一下Spring Boot，下面说一下感受与问题</p>
-<h2 id="感受"><a href="#感受" class="headerlink" title="感受"></a>感受</h2><blockquote>
-<p>不得不说Spring Boot真的是十分好用啊，总的来说就是<strong><em>配置简单， 启动快速， 极易上手</em></strong></p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/02/spring-boot1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/hello-Hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="永恒之恋">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="永恒之恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/30/hello-Hexo/" itemprop="url">Hello, Hexo</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T10:33:36+08:00">
-                2018-03-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-21T08:58:34+08:00">
-                2018-09-21
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/30/hello-Hexo/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/30/hello-Hexo/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>刚搭建好博客，第一篇博客就说一下如何配置Hexo到GitHub吧！</p>
+        <h2 id="学习socket的起因"><a href="#学习socket的起因" class="headerlink" title="学习socket的起因"></a>学习socket的起因</h2><p>原因就是工作中有个项目要用到socket，第一次听到socket这个词的时候一脸懵逼，java中还有这玩意？不都是SSM一套用HTTP请求吗？怎么还有socket这个玩意？</p>
+<a id="more"></a>
+<h2 id="socket是什么？"><a href="#socket是什么？" class="headerlink" title="socket是什么？"></a>socket是什么？</h2><p>摘自百度百科:</p>
 <blockquote>
-<p>我的环境是Windows10 家庭版 64位</p>
+<p>网络上的两个程序通过一个双向的通信连接实现数据的交换，这个连接的一端称为一个socket。</p>
 </blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/30/hello-Hexo/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<p>才疏学浅，个人没办法明确描述socket是什么。不过定义不重要，重要的是如何使用它。</p>
+<h2 id="如何使用socket？"><a href="#如何使用socket？" class="headerlink" title="如何使用socket？"></a>如何使用socket？</h2><h3 id="创建socket服务端"><a href="#创建socket服务端" class="headerlink" title="创建socket服务端"></a>创建socket服务端</h3><h4 id="服务端多线程处理客户端请求"><a href="#服务端多线程处理客户端请求" class="headerlink" title="服务端多线程处理客户端请求"></a>服务端多线程处理客户端请求</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 该类为多线程类，用于服务端 </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Socket client = <span class="keyword">null</span>;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ServerThread</span><span class="params">(Socket client)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.client = client;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">try</span>&#123;  </span><br><span class="line">            <span class="comment">//获取Socket的输出流，用来向客户端发送数据  </span></span><br><span class="line">            PrintStream out = <span class="keyword">new</span> PrintStream(client.getOutputStream());  </span><br><span class="line">            <span class="comment">//获取Socket的输入流，用来接收从客户端发送过来的数据  </span></span><br><span class="line">            BufferedReader buf = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(client.getInputStream()));  </span><br><span class="line">            <span class="keyword">boolean</span> flag =<span class="keyword">true</span>;  </span><br><span class="line">            <span class="keyword">while</span>(flag)&#123;  </span><br><span class="line">                <span class="comment">//接收从客户端发送过来的数据  </span></span><br><span class="line">                String str =  buf.readLine();  </span><br><span class="line">                <span class="keyword">if</span>(str == <span class="keyword">null</span> || <span class="string">""</span>.equals(str))&#123;  </span><br><span class="line">                    flag = <span class="keyword">false</span>;  </span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">                    <span class="keyword">if</span>(<span class="string">"bye"</span>.equals(str))&#123;  </span><br><span class="line">                        flag = <span class="keyword">false</span>;  </span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">                        <span class="comment">//将接收到的字符串前面加上echo，发送到对应的客户端  </span></span><br><span class="line">                        out.println(<span class="string">"echo:"</span> + str);  </span><br><span class="line">                    &#125;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">            out.close();  </span><br><span class="line">            client.close();  </span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="开启服务端"><a href="#开启服务端" class="headerlink" title="开启服务端"></a>开启服务端</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Server1</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;  </span><br><span class="line">        <span class="comment">//服务端在20006端口监听客户端请求的TCP连接  </span></span><br><span class="line">        ServerSocket server = <span class="keyword">new</span> ServerSocket(<span class="number">20006</span>);  </span><br><span class="line">        Socket client = <span class="keyword">null</span>;  </span><br><span class="line">        <span class="keyword">boolean</span> f = <span class="keyword">true</span>;  </span><br><span class="line">        <span class="keyword">while</span>(f)&#123;  </span><br><span class="line">            <span class="comment">//等待客户端的连接，如果没有获取连接  </span></span><br><span class="line">            client = server.accept();  </span><br><span class="line">            System.out.println(<span class="string">"与客户端连接成功！"</span>);  </span><br><span class="line">            <span class="comment">//为每个客户端连接开启一个线程  </span></span><br><span class="line">            <span class="keyword">new</span> Thread(<span class="keyword">new</span> ServerThread(client)).start();  </span><br><span class="line">        &#125;  </span><br><span class="line">        server.close();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编写socket客户端"><a href="#编写socket客户端" class="headerlink" title="编写socket客户端"></a>编写socket客户端</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client1</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;  </span><br><span class="line">        <span class="comment">//客户端请求与本机在20006端口建立TCP连接   </span></span><br><span class="line">        Socket client = <span class="keyword">new</span> Socket(<span class="string">"127.0.0.1"</span>, <span class="number">20006</span>);  </span><br><span class="line">        client.setSoTimeout(<span class="number">10000</span>);  </span><br><span class="line">        <span class="comment">//获取键盘输入   </span></span><br><span class="line">        BufferedReader input = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));  </span><br><span class="line">        <span class="comment">//获取Socket的输出流，用来发送数据到服务端    </span></span><br><span class="line">        PrintStream out = <span class="keyword">new</span> PrintStream(client.getOutputStream());  </span><br><span class="line">        <span class="comment">//获取Socket的输入流，用来接收从服务端发送过来的数据    </span></span><br><span class="line">        BufferedReader buf =  <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(client.getInputStream()));  </span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;  </span><br><span class="line">        <span class="keyword">while</span>(flag)&#123;  </span><br><span class="line">            System.out.print(<span class="string">"输入信息："</span>);  </span><br><span class="line">            String str = input.readLine();  </span><br><span class="line">            <span class="comment">//发送数据到服务端    </span></span><br><span class="line">            out.println(str);  </span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"bye"</span>.equals(str))&#123;  </span><br><span class="line">                flag = <span class="keyword">false</span>;  </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">                <span class="keyword">try</span>&#123;  </span><br><span class="line">                    <span class="comment">//从服务器端接收数据有个时间限制（系统自设，也可以自己设置），超过了这个时间，便会抛出该异常  </span></span><br><span class="line">                    String echo = buf.readLine();  </span><br><span class="line">                    System.out.println(echo);  </span><br><span class="line">                &#125;<span class="keyword">catch</span>(SocketTimeoutException e)&#123;  </span><br><span class="line">                    System.out.println(<span class="string">"Time out, No response"</span>);  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        input.close();  </span><br><span class="line">        <span class="keyword">if</span>(client != <span class="keyword">null</span>)&#123;  </span><br><span class="line">            <span class="comment">//如果构造函数建立起了连接，则关闭套接字，如果没有建立起连接，自然不用关闭  </span></span><br><span class="line">            client.close(); <span class="comment">//只关闭socket，其关联的输入输出流也会被关闭  </span></span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用socket的个人体会"><a href="#使用socket的个人体会" class="headerlink" title="使用socket的个人体会"></a>使用socket的个人体会</h2><ol>
+<li>写出一个简单的服务端/客户端Demo很容易，实际使用并不简单</li>
+<li>socket和HTTP不同，HTTP有请求就有响应，而socket可以没有响应。又或者说socket根本就没有响应这个概念。因为socket是全双工的，所以它的请求和响应都一样。这就需要在使用过程中分辨请求和响应。</li>
+<li>socket必须要鉴权，在第一次使用socket的时候我就在想，这不是只要我开放了端口谁都可以连接上我的socket服务端吗？所以用socket一定要鉴权，对非法连接拒之门外（虽然我不知道的怎么做，但是一定要做）。</li>
+<li>socket读取数据十分麻烦，TCP/IP是传输层协议，而HTTP是应用层协议，两者分工不同。自然造就就读取数据的差异。使用socket必须事事亲力亲为，否则什么都办不成。</li>
+</ol>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://wiki.jikexueyuan.com/project/java-socket/tcp.html" target="_blank" rel="noopener">java tcp socket编程</a><br><a href="https://www.cnblogs.com/riacool/archive/2010/12/14/1905404.html" target="_blank" rel="noopener">TCP/IP和socket的关系</a><br><a href="https://www.jianshu.com/p/f4db4eb065bd" target="_blank" rel="noopener">TCP/IP和HTTP协议的区别</a></p>
+
       
     </div>
     
@@ -778,14 +441,40 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/socket/" rel="tag"># socket</a>
+          
+            <a href="/tags/TCP/" rel="tag"># TCP</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/26/electron-vue-01/" rel="next" title="electron与vue配合生成客户端">
+                <i class="fa fa-chevron-left"></i> electron与vue配合生成客户端
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -795,14 +484,49 @@
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
 
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -810,6 +534,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -830,8 +568,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -901,6 +648,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习socket的起因"><span class="nav-number">1.</span> <span class="nav-text">学习socket的起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket是什么？"><span class="nav-number">2.</span> <span class="nav-text">socket是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用socket？"><span class="nav-number">3.</span> <span class="nav-text">如何使用socket？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建socket服务端"><span class="nav-number">3.1.</span> <span class="nav-text">创建socket服务端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务端多线程处理客户端请求"><span class="nav-number">3.1.1.</span> <span class="nav-text">服务端多线程处理客户端请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启服务端"><span class="nav-number">3.1.2.</span> <span class="nav-text">开启服务端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写socket客户端"><span class="nav-number">3.2.</span> <span class="nav-text">编写socket客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用socket的个人体会"><span class="nav-number">4.</span> <span class="nav-text">使用socket的个人体会</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1028,6 +791,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1045,6 +812,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/06/01/java-socket-01/';
+          this.page.identifier = '2019/06/01/java-socket-01/';
+          this.page.title = 'java中的socket(01)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
