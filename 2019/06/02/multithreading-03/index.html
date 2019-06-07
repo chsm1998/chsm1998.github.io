@@ -88,7 +88,7 @@
 <meta property="og:description" content="线程安全问题提到多线程，就不得不提线程安全问题。线程安全问题发生的首要因素就是，多个线程操作共享变量。只有在操作共享变量时才可能出现线程安全问题，对于局部变量的操作，是不会导致线程安全问题的。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/synchronize01.png">
-<meta property="og:updated_time" content="2019-06-02T08:05:46.126Z">
+<meta property="og:updated_time" content="2019-06-02T10:54:42.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Java多线程之synchronized">
 <meta name="twitter:description" content="线程安全问题提到多线程，就不得不提线程安全问题。线程安全问题发生的首要因素就是，多个线程操作共享变量。只有在操作共享变量时才可能出现线程安全问题，对于局部变量的操作，是不会导致线程安全问题的。">
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-02T16:05:46+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-02T18:54:42+08:00">
                 2019-06-02
               </time>
             
@@ -416,7 +416,7 @@
 <p>注：本篇文章只讨论线程争抢导致数据不一致问题，不讨论原子性、可见性等问题。<br>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.socket.multithreading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SafetyThread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">while</span> (num &lt; <span class="number">100</span>) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + num);</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);Thread thread2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">while</span> (num &lt; <span class="number">100</span>) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + num);</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 存在线程安全问题</span></span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line">        Thread thread3 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (num &lt; <span class="number">100</span>) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + num);</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);Thread thread4 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">while</span> (num &lt; <span class="number">100</span>) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + num);</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 不存在线程安全问题</span></span><br><span class="line">        thread3.start();</span><br><span class="line">        thread4.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h2 id="synchronized是什么？"><a href="#synchronized是什么？" class="headerlink" title="synchronized是什么？"></a>synchronized是什么？</h2><p>synchronized是Java当中的一种同步锁，使用synchronized锁住的代码块都是同步方法<br><img src="/images/synchronize01.png" alt="synchronized解释"></p>
-<h2 id="如何使用synchronized解决线程安全问题"><a href="#如何使用synchronized解决线程安全问题" class="headerlink" title="如何使用synchronized解决线程安全问题"></a>如何使用synchronized解决线程安全问题</h2><p>一下代码均取自<a href="https://chsm1998.github.io//2019/06/02/multithreading-02/" target="_blank" rel="noopener">初识Java多线程之创建多线程的几种方式(一)</a>中的代码只修改了其中的run方法。</p>
+<h2 id="如何使用synchronized解决线程安全问题"><a href="#如何使用synchronized解决线程安全问题" class="headerlink" title="如何使用synchronized解决线程安全问题"></a>如何使用synchronized解决线程安全问题</h2><p>一下代码均取自<a href="https://chsm1998.github.io//2019/06/02/multithreading-01/" target="_blank" rel="noopener">初识Java多线程之创建多线程的几种方式(一)</a>中的代码只修改了其中的run方法。</p>
 <h3 id="用synchronized解决实现Runnable接口的线程安全问题"><a href="#用synchronized解决实现Runnable接口的线程安全问题" class="headerlink" title="用synchronized解决实现Runnable接口的线程安全问题"></a>用synchronized解决实现Runnable接口的线程安全问题</h3><ol>
 <li><p>锁住整个run方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">50</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"当前票号："</span> + num);</span><br><span class="line">        num--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -489,6 +489,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/06/multithreading-04/" rel="prev" title="初识Java多线程之线程间的通信">
+                初识Java多线程之线程间的通信 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -613,7 +617,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
