@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="永恒之恋">
 <meta property="og:description" content="序言本篇及后续mysql文章集合中的知识均来自于极客时间的《MySQL实战45讲》专栏，文章的目的只是为了对专栏学习的一个知识汇总。由于是对专栏知识的一个总体概括，可能每篇文章与专栏的顺序不是一一对应的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-09T07:17:12.942Z">
+<meta property="og:updated_time" content="2020-03-09T07:47:54.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql-基础架构">
 <meta name="twitter:description" content="序言本篇及后续mysql文章集合中的知识均来自于极客时间的《MySQL实战45讲》专栏，文章的目的只是为了对专栏学习的一个知识汇总。由于是对专栏知识的一个总体概括，可能每篇文章与专栏的顺序不是一一对应的。">
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-09T15:17:12+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-09T15:47:54+08:00">
                 2020-03-09
               </time>
             
@@ -409,9 +409,9 @@
       
 
       
-        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>本篇及后续mysql文章集合中的知识均来自于极客时间的《MySQL实战45讲》专栏，文章的目的只是为了对专栏学习的一个知识汇总。<br>由于是对专栏知识的一个总体概括，可能每篇文章与专栏的顺序不是一一对应的。</p>
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>本篇及后续mysql文章集合中的知识均来自于<strong>极客时间的《MySQL实战45讲》专栏</strong>，文章的目的只是为了对专栏学习的一个知识汇总。<br>由于是对专栏知识的一个总体概括，可能每篇文章与专栏的顺序不是一一对应的。</p>
 <a id="more"></a>
-<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><h3 id="MySQL主体架构"><a href="#MySQL主体架构" class="headerlink" title="MySQL主体架构"></a>MySQL主体架构</h3><p>MySQL的基本架构大体上可以分为Server层和存储引擎两个部分</p>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><h3 id="MySQL主体架构"><a href="#MySQL主体架构" class="headerlink" title="MySQL主体架构"></a>MySQL主体架构</h3><p>MySQL的基本架构大体上可以分为<strong>Server层和存储引擎</strong>两个部分</p>
 <h4 id="Server层"><a href="#Server层" class="headerlink" title="Server层"></a>Server层</h4><p>Server 层包括<strong>连接器、查询缓存、分析器、优化器、执行器</strong>等，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等</p>
 <h4 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h4><p>而存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持 InnoDB、MyISAM、Memory 等多个存储引擎。现在最常用的存储引擎是 InnoDB，它从 MySQL 5.5.5 版本开始成为了默认存储引擎。</p>
 <h3 id="连接器"><a href="#连接器" class="headerlink" title="连接器"></a>连接器</h3><p>连接器负责跟客户端建立连接、获取权限、维持和管理连接</p>
