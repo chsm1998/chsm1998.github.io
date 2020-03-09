@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java,socket,TCP," />
+  <meta name="keywords" content="mysql," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="学习socket的起因原因就是工作中有个项目要用到socket，第一次听到socket这个词的时候一脸懵逼，java中还有这玩意？不都是SSM一套用HTTP请求吗？怎么还有socket这个玩意？">
-<meta name="keywords" content="java,socket,TCP">
+<meta name="description" content="序言本篇及后续mysql文章集合中的知识均来自于极客时间的《MySQL实战45讲》专栏，文章的目的只是为了对专栏学习的一个知识汇总。由于是对专栏知识的一个总体概括，可能每篇文章与专栏的顺序不是一一对应的。">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java中的socket(01)">
-<meta property="og:url" content="http://yoursite.com/2019/06/01/java-socket-01/index.html">
+<meta property="og:title" content="mysql-基础架构">
+<meta property="og:url" content="http://yoursite.com/2020/03/09/mysql-01/index.html">
 <meta property="og:site_name" content="永恒之恋">
-<meta property="og:description" content="学习socket的起因原因就是工作中有个项目要用到socket，第一次听到socket这个词的时候一脸懵逼，java中还有这玩意？不都是SSM一套用HTTP请求吗？怎么还有socket这个玩意？">
+<meta property="og:description" content="序言本篇及后续mysql文章集合中的知识均来自于极客时间的《MySQL实战45讲》专栏，文章的目的只是为了对专栏学习的一个知识汇总。由于是对专栏知识的一个总体概括，可能每篇文章与专栏的顺序不是一一对应的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-01T08:07:07.698Z">
+<meta property="og:updated_time" content="2020-03-09T07:17:12.942Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java中的socket(01)">
-<meta name="twitter:description" content="学习socket的起因原因就是工作中有个项目要用到socket，第一次听到socket这个词的时候一脸懵逼，java中还有这玩意？不都是SSM一套用HTTP请求吗？怎么还有socket这个玩意？">
+<meta name="twitter:title" content="mysql-基础架构">
+<meta name="twitter:description" content="序言本篇及后续mysql文章集合中的知识均来自于极客时间的《MySQL实战45讲》专栏，文章的目的只是为了对专栏学习的一个知识汇总。由于是对专栏知识的一个总体概括，可能每篇文章与专栏的顺序不是一一对应的。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/01/java-socket-01/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/09/mysql-01/"/>
 
 
 
 
 
-  <title>java中的socket(01) | 永恒之恋</title>
+  <title>mysql-基础架构 | 永恒之恋</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/java-socket-01/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/mysql-01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="永恒之恋">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java中的socket(01)</h1>
+          <h1 class="post-title" itemprop="name headline">mysql-基础架构</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T15:29:47+08:00">
-                2019-06-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-09T14:28:14+08:00">
+                2020-03-09
               </time>
             
 
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-01T16:07:07+08:00">
-                2019-06-01
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-09T15:17:12+08:00">
+                2020-03-09
               </time>
             
           </span>
@@ -361,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -379,9 +379,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/01/java-socket-01/#comments" itemprop="discussionUrl">
+                <a href="/2020/03/09/mysql-01/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/01/java-socket-01/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2020/03/09/mysql-01/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,23 +409,46 @@
       
 
       
-        <h2 id="学习socket的起因"><a href="#学习socket的起因" class="headerlink" title="学习socket的起因"></a>学习socket的起因</h2><p>原因就是工作中有个项目要用到socket，第一次听到socket这个词的时候一脸懵逼，java中还有这玩意？不都是SSM一套用HTTP请求吗？怎么还有socket这个玩意？</p>
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>本篇及后续mysql文章集合中的知识均来自于极客时间的《MySQL实战45讲》专栏，文章的目的只是为了对专栏学习的一个知识汇总。<br>由于是对专栏知识的一个总体概括，可能每篇文章与专栏的顺序不是一一对应的。</p>
 <a id="more"></a>
-<h2 id="socket是什么？"><a href="#socket是什么？" class="headerlink" title="socket是什么？"></a>socket是什么？</h2><p>摘自百度百科:</p>
-<blockquote>
-<p>网络上的两个程序通过一个双向的通信连接实现数据的交换，这个连接的一端称为一个socket。</p>
-</blockquote>
-<p>才疏学浅，个人没办法明确描述socket是什么。不过定义不重要，重要的是如何使用它。</p>
-<h2 id="如何使用socket？"><a href="#如何使用socket？" class="headerlink" title="如何使用socket？"></a>如何使用socket？</h2><h3 id="创建socket服务端"><a href="#创建socket服务端" class="headerlink" title="创建socket服务端"></a>创建socket服务端</h3><h4 id="服务端多线程处理客户端请求"><a href="#服务端多线程处理客户端请求" class="headerlink" title="服务端多线程处理客户端请求"></a>服务端多线程处理客户端请求</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 该类为多线程类，用于服务端 </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Socket client = <span class="keyword">null</span>;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ServerThread</span><span class="params">(Socket client)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.client = client;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">try</span>&#123;  </span><br><span class="line">            <span class="comment">//获取Socket的输出流，用来向客户端发送数据  </span></span><br><span class="line">            PrintStream out = <span class="keyword">new</span> PrintStream(client.getOutputStream());  </span><br><span class="line">            <span class="comment">//获取Socket的输入流，用来接收从客户端发送过来的数据  </span></span><br><span class="line">            BufferedReader buf = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(client.getInputStream()));  </span><br><span class="line">            <span class="keyword">boolean</span> flag =<span class="keyword">true</span>;  </span><br><span class="line">            <span class="keyword">while</span>(flag)&#123;  </span><br><span class="line">                <span class="comment">//接收从客户端发送过来的数据  </span></span><br><span class="line">                String str =  buf.readLine();  </span><br><span class="line">                <span class="keyword">if</span>(str == <span class="keyword">null</span> || <span class="string">""</span>.equals(str))&#123;  </span><br><span class="line">                    flag = <span class="keyword">false</span>;  </span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">                    <span class="keyword">if</span>(<span class="string">"bye"</span>.equals(str))&#123;  </span><br><span class="line">                        flag = <span class="keyword">false</span>;  </span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">                        <span class="comment">//将接收到的字符串前面加上echo，发送到对应的客户端  </span></span><br><span class="line">                        out.println(<span class="string">"echo:"</span> + str);  </span><br><span class="line">                    &#125;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">            out.close();  </span><br><span class="line">            client.close();  </span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="开启服务端"><a href="#开启服务端" class="headerlink" title="开启服务端"></a>开启服务端</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Server1</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;  </span><br><span class="line">        <span class="comment">//服务端在20006端口监听客户端请求的TCP连接  </span></span><br><span class="line">        ServerSocket server = <span class="keyword">new</span> ServerSocket(<span class="number">20006</span>);  </span><br><span class="line">        Socket client = <span class="keyword">null</span>;  </span><br><span class="line">        <span class="keyword">boolean</span> f = <span class="keyword">true</span>;  </span><br><span class="line">        <span class="keyword">while</span>(f)&#123;  </span><br><span class="line">            <span class="comment">//等待客户端的连接，如果没有获取连接  </span></span><br><span class="line">            client = server.accept();  </span><br><span class="line">            System.out.println(<span class="string">"与客户端连接成功！"</span>);  </span><br><span class="line">            <span class="comment">//为每个客户端连接开启一个线程  </span></span><br><span class="line">            <span class="keyword">new</span> Thread(<span class="keyword">new</span> ServerThread(client)).start();  </span><br><span class="line">        &#125;  </span><br><span class="line">        server.close();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="编写socket客户端"><a href="#编写socket客户端" class="headerlink" title="编写socket客户端"></a>编写socket客户端</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client1</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;  </span><br><span class="line">        <span class="comment">//客户端请求与本机在20006端口建立TCP连接   </span></span><br><span class="line">        Socket client = <span class="keyword">new</span> Socket(<span class="string">"127.0.0.1"</span>, <span class="number">20006</span>);  </span><br><span class="line">        client.setSoTimeout(<span class="number">10000</span>);  </span><br><span class="line">        <span class="comment">//获取键盘输入   </span></span><br><span class="line">        BufferedReader input = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));  </span><br><span class="line">        <span class="comment">//获取Socket的输出流，用来发送数据到服务端    </span></span><br><span class="line">        PrintStream out = <span class="keyword">new</span> PrintStream(client.getOutputStream());  </span><br><span class="line">        <span class="comment">//获取Socket的输入流，用来接收从服务端发送过来的数据    </span></span><br><span class="line">        BufferedReader buf =  <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(client.getInputStream()));  </span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;  </span><br><span class="line">        <span class="keyword">while</span>(flag)&#123;  </span><br><span class="line">            System.out.print(<span class="string">"输入信息："</span>);  </span><br><span class="line">            String str = input.readLine();  </span><br><span class="line">            <span class="comment">//发送数据到服务端    </span></span><br><span class="line">            out.println(str);  </span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"bye"</span>.equals(str))&#123;  </span><br><span class="line">                flag = <span class="keyword">false</span>;  </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">                <span class="keyword">try</span>&#123;  </span><br><span class="line">                    <span class="comment">//从服务器端接收数据有个时间限制（系统自设，也可以自己设置），超过了这个时间，便会抛出该异常  </span></span><br><span class="line">                    String echo = buf.readLine();  </span><br><span class="line">                    System.out.println(echo);  </span><br><span class="line">                &#125;<span class="keyword">catch</span>(SocketTimeoutException e)&#123;  </span><br><span class="line">                    System.out.println(<span class="string">"Time out, No response"</span>);  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        input.close();  </span><br><span class="line">        <span class="keyword">if</span>(client != <span class="keyword">null</span>)&#123;  </span><br><span class="line">            <span class="comment">//如果构造函数建立起了连接，则关闭套接字，如果没有建立起连接，自然不用关闭  </span></span><br><span class="line">            client.close(); <span class="comment">//只关闭socket，其关联的输入输出流也会被关闭  </span></span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="使用socket的个人体会"><a href="#使用socket的个人体会" class="headerlink" title="使用socket的个人体会"></a>使用socket的个人体会</h2><ol>
-<li>写出一个简单的服务端/客户端Demo很容易，实际使用并不简单</li>
-<li>socket和HTTP不同，HTTP有请求就有响应，而socket可以没有响应。又或者说socket根本就没有响应这个概念。因为socket是全双工的，所以它的请求和响应都一样。这就需要在使用过程中分辨请求和响应。</li>
-<li>socket必须要鉴权，在第一次使用socket的时候我就在想，这不是只要我开放了端口谁都可以连接上我的socket服务端吗？所以用socket一定要鉴权，对非法连接拒之门外（虽然我不知道的怎么做，但是一定要做）。</li>
-<li>socket读取数据十分麻烦，TCP/IP是传输层协议，而HTTP是应用层协议，两者分工不同。自然造就就读取数据的差异。使用socket必须事事亲力亲为，否则什么都办不成。</li>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><h3 id="MySQL主体架构"><a href="#MySQL主体架构" class="headerlink" title="MySQL主体架构"></a>MySQL主体架构</h3><p>MySQL的基本架构大体上可以分为Server层和存储引擎两个部分</p>
+<h4 id="Server层"><a href="#Server层" class="headerlink" title="Server层"></a>Server层</h4><p>Server 层包括<strong>连接器、查询缓存、分析器、优化器、执行器</strong>等，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等</p>
+<h4 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h4><p>而存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持 InnoDB、MyISAM、Memory 等多个存储引擎。现在最常用的存储引擎是 InnoDB，它从 MySQL 5.5.5 版本开始成为了默认存储引擎。</p>
+<h3 id="连接器"><a href="#连接器" class="headerlink" title="连接器"></a>连接器</h3><p>连接器负责跟客户端建立连接、获取权限、维持和管理连接</p>
+<ul>
+<li>如果用户名或密码不对，你就会收到一个”Access denied for user”的错误，然后客户端程序结束执行。</li>
+<li>如果用户名密码认证通过，连接器会到权限表里面查出你拥有的权限。之后，这个连接里面的权限判断逻辑，都将依赖于此时读到的权限。</li>
+</ul>
+<p>这就意味着，一个用户成功建立连接后，<strong>即使你用管理员账号对这个用户的权限做了修改，也不会影响已经存在连接的权限。</strong>修改完成后，只有再新建的连接才会使用新的权限设置。</p>
+<p>建立连接的过程通常是比较复杂的，所以我建议你在使用中要尽量减少建立连接的动作，也就是尽量使用长连接。</p>
+<h4 id="MySQL长连接注意事项"><a href="#MySQL长连接注意事项" class="headerlink" title="MySQL长连接注意事项"></a>MySQL长连接注意事项</h4><p>但是全部使用长连接后，你可能会发现，有些时候 MySQL 占用内存涨得特别快，这是因为 MySQL 在执行过程中临时使用的内存是管理在连接对象里面的。这些资源会在连接断开的时候才释放。所以如果长连接累积下来，可能导致内存占用太大，被系统强行杀掉（OOM），从现象看就是 MySQL 异常重启了。</p>
+<h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><ol>
+<li>定期断开长连接。使用一段时间，或者程序里面判断执行过一个占用内存的大查询后，断开连接，之后要查询再重连。</li>
+<li>如果你用的是 MySQL 5.7 或更新版本，可以在每次执行一个比较大的操作后，通过执行 mysql_reset_connection 来重新初始化连接资源。这个过程不需要重连和重新做权限验证，但是会将连接恢复到刚刚创建完时的状态。</li>
 </ol>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://wiki.jikexueyuan.com/project/java-socket/tcp.html" target="_blank" rel="noopener">java tcp socket编程</a><br><a href="https://www.cnblogs.com/riacool/archive/2010/12/14/1905404.html" target="_blank" rel="noopener">TCP/IP和socket的关系</a><br><a href="https://www.jianshu.com/p/f4db4eb065bd" target="_blank" rel="noopener">TCP/IP和HTTP协议的区别</a></p>
+<h3 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h3><p>MySQL 拿到一个查询请求后，会先到查询缓存看看，之前是不是执行过这条语句。之前执行过的语句及其结果可能会以 key-value 对的形式，被直接缓存在内存中。key 是查询的语句，value 是查询的结果。如果你的查询能够直接在这个缓存中找到 key，那么这个 value 就会被直接返回给客户端。</p>
+<p>如果语句不在查询缓存中，就会继续后面的执行阶段。执行完成后，执行结果会被存入查询缓存中。你可以看到，如果查询命中缓存，MySQL 不需要执行后面的复杂操作，就可以直接返回结果，这个效率会很高。</p>
+<p><strong>但是大多数情况下我会建议你不要使用查询缓存，为什么呢？因为查询缓存往往弊大于利。</strong></p>
+<p>查询缓存的失效非常频繁，只要有对一个表的更新，这个表上所有的查询缓存都会被清空。因此很可能你费劲地把结果存起来，还没使用呢，就被一个更新全清空了。对于更新压力大的数据库来说，查询缓存的命中率会非常低。除非你的业务就是有一张静态表，很长时间才会更新一次。比如，一个系统配置表，那这张表上的查询才适合使用查询缓存。</p>
+<p><strong>需要注意的是，MySQL 8.0 版本直接将查询缓存的整块功能删掉了，也就是说 8.0 开始彻底没有这个功能了。</strong></p>
+<h3 id="分析器"><a href="#分析器" class="headerlink" title="分析器"></a>分析器</h3><p>分析器先会做“词法分析”。你输入的是由多个字符串和空格组成的一条 SQL 语句，MySQL 需要识别出里面的字符串分别是什么，代表什么。</p>
+<p>MySQL 从你输入的”select”这个关键字识别出来，这是一个查询语句。它也要把字符串“T”识别成“表名 T”，把字符串“ID”识别成“列 ID”。</p>
+<p>做完了这些识别以后，就要做“语法分析”。根据词法分析的结果，语法分析器会根据语法规则，判断你输入的这个 SQL 语句是否满足 MySQL 语法。</p>
+<h3 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h3><p>优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。</p>
+<p>比如你执行下面这样的语句，这个语句是执行两个表的 join：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from t1 join t2 using(ID)  where t1.c=10 and t2.d=20;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>既可以先从表 t1 里面取出 c=10 的记录的 ID 值，再根据 ID 值关联到表 t2，再判断 t2 里面 d 的值是否等于 20。</li>
+<li>也可以先从表 t2 里面取出 d=20 的记录的 ID 值，再根据 ID 值关联到 t1，再判断 t1 里面 c 的值是否等于 10。</li>
+</ul>
+<h3 id="执行器"><a href="#执行器" class="headerlink" title="执行器"></a>执行器</h3><p>SQL开始执行的时候，要先判断一下你对这个表 T 有没有执行查询的权限，如果没有，就会返回没有权限的错误，如下所示 (在工程实现上，如果命中查询缓存，会在查询缓存返回结果的时候，做权限验证。查询也会在优化器之前调用 precheck 验证权限)。</p>
+<p>如果有权限，就打开表继续执行。打开表的时候，执行器就会根据表的引擎定义，去使用这个引擎提供的接口。比如我们这个例子中的表 T 中，ID 字段没有索引，那么执行器的执行流程是这样的：</p>
+<ol>
+<li>调用 InnoDB 引擎接口取这个表的第一行，判断 ID 值是不是 10，如果不是则跳过，如果是则将这行存在结果集中；</li>
+<li>调用引擎接口取“下一行”，重复相同的判断逻辑，直到取到这个表的最后一行。</li>
+<li>执行器将上述遍历过程中所有满足条件的行组成的记录集作为结果集返回给客户端。</li>
+</ol>
+<p>对于有索引的表，执行的逻辑也差不多。第一次调用的是“取满足条件的第一行”这个接口，之后循环取“满足条件的下一行”这个接口，这些接口都是引擎中已经定义好的。</p>
 
       
     </div>
@@ -443,11 +466,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
-          
-            <a href="/tags/socket/" rel="tag"># socket</a>
-          
-            <a href="/tags/TCP/" rel="tag"># TCP</a>
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
           
         </div>
       
@@ -460,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/26/electron-vue-01/" rel="next" title="electron与vue配合生成客户端">
-                <i class="fa fa-chevron-left"></i> electron与vue配合生成客户端
+              <a href="/2019/06/07/multithreading-05/" rel="next" title="创建多线程方式之Callable">
+                <i class="fa fa-chevron-left"></i> 创建多线程方式之Callable
               </a>
             
           </div>
@@ -469,10 +488,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/02/multithreading-01/" rel="prev" title="初识Java多线程之创建多线程的几种方式(一)">
-                初识Java多线程之创建多线程的几种方式(一) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -662,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习socket的起因"><span class="nav-number">1.</span> <span class="nav-text">学习socket的起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket是什么？"><span class="nav-number">2.</span> <span class="nav-text">socket是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用socket？"><span class="nav-number">3.</span> <span class="nav-text">如何使用socket？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建socket服务端"><span class="nav-number">3.1.</span> <span class="nav-text">创建socket服务端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务端多线程处理客户端请求"><span class="nav-number">3.1.1.</span> <span class="nav-text">服务端多线程处理客户端请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启服务端"><span class="nav-number">3.1.2.</span> <span class="nav-text">开启服务端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写socket客户端"><span class="nav-number">3.2.</span> <span class="nav-text">编写socket客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用socket的个人体会"><span class="nav-number">4.</span> <span class="nav-text">使用socket的个人体会</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要内容"><span class="nav-number">2.</span> <span class="nav-text">主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL主体架构"><span class="nav-number">2.1.</span> <span class="nav-text">MySQL主体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Server层"><span class="nav-number">2.1.1.</span> <span class="nav-text">Server层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储引擎"><span class="nav-number">2.1.2.</span> <span class="nav-text">存储引擎</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接器"><span class="nav-number">2.2.</span> <span class="nav-text">连接器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL长连接注意事项"><span class="nav-number">2.2.1.</span> <span class="nav-text">MySQL长连接注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询缓存"><span class="nav-number">2.3.</span> <span class="nav-text">查询缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析器"><span class="nav-number">2.4.</span> <span class="nav-text">分析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化器"><span class="nav-number">2.5.</span> <span class="nav-text">优化器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行器"><span class="nav-number">2.6.</span> <span class="nav-text">执行器</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -819,9 +834,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/06/01/java-socket-01/';
-          this.page.identifier = '2019/06/01/java-socket-01/';
-          this.page.title = 'java中的socket(01)';
+          this.page.url = 'http://yoursite.com/2020/03/09/mysql-01/';
+          this.page.identifier = '2020/03/09/mysql-01/';
+          this.page.title = 'mysql-基础架构';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
