@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="mysql," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="勤学如春起之苗，不见其增，日有所长；辍学如磨刀之石，不见其损，日有所亏。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="月华">
-<meta property="og:url" content="http://yoursite.com/tags/spring-cloud/index.html">
+<meta name="description" content="序言SQL 标准的事务隔离级别包括：读未提交（read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（serializable ）。  事务ACID特性：ACID（Atomicity、Consistency、Isolation、Durability，即原子性、一致性、隔离性、持久性）">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql-03-事务隔离级别">
+<meta property="og:url" content="http://yoursite.com/2020/03/11/mysql-03/index.html">
 <meta property="og:site_name" content="月华">
-<meta property="og:description" content="勤学如春起之苗，不见其增，日有所长；辍学如磨刀之石，不见其损，日有所亏。">
+<meta property="og:description" content="序言SQL 标准的事务隔离级别包括：读未提交（read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（serializable ）。  事务ACID特性：ACID（Atomicity、Consistency、Isolation、Durability，即原子性、一致性、隔离性、持久性）">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-11T12:16:02.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="月华">
-<meta name="twitter:description" content="勤学如春起之苗，不见其增，日有所长；辍学如磨刀之石，不见其损，日有所亏。">
+<meta name="twitter:title" content="mysql-03-事务隔离级别">
+<meta name="twitter:description" content="序言SQL 标准的事务隔离级别包括：读未提交（read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（serializable ）。  事务ACID特性：ACID（Atomicity、Consistency、Isolation、Durability，即原子性、一致性、隔离性、持久性）">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/spring-cloud/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/11/mysql-03/"/>
 
 
 
 
 
-  <title>标签: spring cloud | 月华</title>
+  <title>mysql-03-事务隔离级别 | 月华</title>
   
 
 
@@ -153,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,82 +283,334 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>spring cloud<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/mysql-03/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="月华">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="月华">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/04/spring-cloud-eureka/" itemprop="url">
-              
-                <span itemprop="name">Spring Cloud(2)--服务发现和注册Eureka</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">mysql-03-事务隔离级别</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-04T09:09:36+08:00"
-              content="2019-03-04" >
-          03-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-11T19:40:26+08:00">
+                2020-03-11
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-11T20:16:02+08:00">
+                2020-03-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/11/mysql-03/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/03/11/mysql-03/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/04/spring-cloud-start/" itemprop="url">
-              
-                <span itemprop="name">Spring Cloud(1)--初识spring cloud</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-04T08:26:16+08:00"
-              content="2019-03-04" >
-          03-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>SQL 标准的事务隔离级别包括：<strong>读未提交（read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（serializable ）</strong>。</p>
+<p> 事务ACID特性：<strong>ACID（Atomicity、Consistency、Isolation、Durability，即原子性、一致性、隔离性、持久性）</strong></p>
+<a id="more"></a>
+<p>数据库上有多个事务同时执行的时候，就可能出现<strong>脏读（dirty read）、不可重复读（non-repeatable read）、幻读（phantom read）</strong>的问题，为了解决这些问题，就有了“隔离级别”的概念。</p>
+<h2 id="事务存在的原因"><a href="#事务存在的原因" class="headerlink" title="事务存在的原因"></a>事务存在的原因</h2><p>简单来说，事务就是要保证一组数据库操作，要么全部成功，要么全部失败。在 MySQL 中，<strong>事务支持是在引擎层实现的</strong>。你现在知道，MySQL 是一个支持多引擎的系统，但<strong>并不是所有的引擎都支持事务</strong>。比如 MySQL 原生的 <strong>MyISAM 引擎就不支持事务，这也是 MyISAM 被 InnoDB 取代的重要原因之一</strong>。</p>
+<blockquote>
+<p>以下内容都是建立在InnoDB引擎下的</p>
+</blockquote>
+<h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><ul>
+<li><p>读未提交是指，一个事务还没提交时，它做的变更就能被别的事务看到。</p>
+</li>
+<li><p>读提交是指，一个事务提交之后，它做的变更才会被其他事务看到。</p>
+</li>
+<li><p>可重复读是指，一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的。当然在可重复读隔离级别下，未提交变更对其他事务也是不可见的。</p>
+</li>
+<li><p>串行化，顾名思义是对于同一行记录，“写”会加“写锁”，“读”会加“读锁”。当出现读写锁冲突的时候，后访问的事务必须等前一个事务执行完成，才能继续执行。</p>
+</li>
+</ul>
+<h3 id="各事务隔离级别之间的区别"><a href="#各事务隔离级别之间的区别" class="headerlink" title="各事务隔离级别之间的区别"></a>各事务隔离级别之间的区别</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T(c <span class="built_in">int</span>) <span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> T(c) <span class="keyword">values</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">事务A</th>
+<th style="text-align:center">事务B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">启动事务A查询到值1</td>
+<td style="text-align:center">启动事务</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">查询到值1</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">将1改成2</td>
+</tr>
+<tr>
+<td style="text-align:center">查询到值V1</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">事务提交</td>
+</tr>
+<tr>
+<td style="text-align:center">查询到值V2</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">事务提交</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">查询到值V3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>各种隔离级别下V1、V2、V3的值各是多少？</strong></p>
+<ol>
+<li>读未提交：<strong>V1、V2、V3的值都是2</strong>，该隔离级别事务A可以读到事务B未提交的值</li>
+<li>读提交：<strong>V1：1，V2、V3：2</strong>，该隔离级别事务A可以读到事务B提交后的值</li>
+<li>可重复读：<strong>V1、V2：1，V3：2</strong>，该隔离级别确保在事务提交前，读到的值都是一致的</li>
+<li>串行化：<strong>V1、V2：1，V3：2</strong>，该隔离级别在事务A未提交之前，事务B无法对值进行操作，只有等事务A结束释放锁后，事务B才能将值改为2</li>
+</ol>
+<p>在实现上，数据库里面会创建一个视图，访问的时候以视图的逻辑结果为准。在“可重复读”隔离级别下，这个视图是在事务启动时创建的，整个事务存在期间都用这个视图。在“读提交”隔离级别下，这个视图是在每个 SQL 语句开始执行的时候创建的。这里需要注意的是，“读未提交”隔离级别下直接返回记录上的最新值，没有视图概念；而“串行化”隔离级别下直接用加锁的方式来避免并行访问。</p>
+<h2 id="事务隔离级别的实现"><a href="#事务隔离级别的实现" class="headerlink" title="事务隔离级别的实现"></a>事务隔离级别的实现</h2><p>在 MySQL 中，实际上每条记录在更新的时候都会同时记录一条回滚操作。记录上的最新值，通过回滚操作，都可以得到前一个状态的值。</p>
+<p>假设一个值从 1 被按顺序改成了 2、3、4，在回滚日志里面就会有类似下面的记录。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">read-view A</th>
+<th style="text-align:center">read-view B</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">read-view C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">将2改为1</td>
+<td style="text-align:center">将3改为2</td>
+<td style="text-align:center">将4改为3</td>
+<td style="text-align:center">当前值4</td>
+</tr>
+</tbody>
+</table>
+<p>当前值是 4，但是在查询这条记录的时候，<strong>不同时刻启动的事务会有不同的 read-view</strong>。如图中看到的，在视图 A、B、C 里面，这一个记录的值分别是 1、2、4，<strong>同一条记录在系统中可以存在多个版本，就是数据库的多版本并发控制（MVCC）</strong>。对于 read-view A，要得到 1，就必须将当前值依次执行图中所有的回滚操作得到。</p>
+<h3 id="回滚日志什么时候删除？"><a href="#回滚日志什么时候删除？" class="headerlink" title="回滚日志什么时候删除？"></a>回滚日志什么时候删除？</h3><p>答案是，在不需要的时候才删除。也就是说，系统会判断，当没有事务再需要用到这些回滚日志时，回滚日志会被删除。</p>
+<p>什么时候才不需要了呢？就是当系统里没有比这个回滚日志更早的 read-view 的时候。</p>
+<h3 id="尽量不要使用长事务"><a href="#尽量不要使用长事务" class="headerlink" title="尽量不要使用长事务"></a>尽量不要使用长事务</h3><p>长事务意味着系统里面会存在很老的事务视图。由于这些事务随时可能访问数据库里面的任何数据，所以这个事务提交之前，数据库里面它可能用到的回滚记录都必须保留，这就会导致大量占用存储空间。</p>
+<p>在 MySQL 5.5 及以前的版本，回滚日志是跟数据字典一起放在 ibdata 文件里的，即使长事务最终提交，回滚段被清理，文件也不会变小。</p>
+<h2 id="事务启动方式"><a href="#事务启动方式" class="headerlink" title="事务启动方式"></a>事务启动方式</h2><ol>
+<li>显式启动事务语句， begin 或 start transaction。配套的提交语句是 commit，回滚语句是 rollback。</li>
+<li>set autocommit=0，这个命令会将这个线程的自动提交关掉。意味着如果你只执行一个 select 语句，这个事务就启动了，而且并不会自动提交。这个事务持续存在直到你主动执行 commit 或 rollback 语句，或者断开连接。</li>
+</ol>
+<h3 id="如何减少显式启动事务的begin语句？"><a href="#如何减少显式启动事务的begin语句？" class="headerlink" title="如何减少显式启动事务的begin语句？"></a>如何减少显式启动事务的begin语句？</h3><p>使用commit work and chain 语法</p>
+<p>在 autocommit 为 1 的情况下，用 begin 显式启动的事务，如果执行 commit 则提交事务。如果执行 commit work and chain，则是提交事务并自动启动下一个事务，这样也省去了再次执行 begin 语句的开销。同时带来的好处是从程序开发的角度明确地知道每个语句是否处于事务中。</p>
+<h3 id="长事务查询方法"><a href="#长事务查询方法" class="headerlink" title="长事务查询方法"></a>长事务查询方法</h3><p>你可以在 information_schema 库的 innodb_trx 这个表中查询长事务，比如下面这个语句，用于查找持续时间超过 60s 的事务</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> information_schema.innodb_trx <span class="keyword">where</span> TIME_TO_SEC(<span class="keyword">timediff</span>(<span class="keyword">now</span>(),trx_started))&gt;<span class="number">60</span></span><br></pre></td></tr></table></figure>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>Oracle的默认事务隔离级别为：读提交，而MySQL的默认事务隔离级别为：可重复读，所以在数据库迁移时需保证事务隔离级别一致，以免造成不必要的麻烦。</li>
+<li>set autocommit=0 会导致接下来的查询都在事务中，如果是长连接，就导致了意外的长事务。建议使用 set autocommit=1, 通过显式语句的方式来启动事务。</li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/10/mysql-02/" rel="next" title="mysql-02-日志系统">
+                <i class="fa fa-chevron-left"></i> mysql-02-日志系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -364,6 +618,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -384,8 +652,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -455,6 +732,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务存在的原因"><span class="nav-number">2.</span> <span class="nav-text">事务存在的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">3.</span> <span class="nav-text">事务隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#各事务隔离级别之间的区别"><span class="nav-number">3.1.</span> <span class="nav-text">各事务隔离级别之间的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务隔离级别的实现"><span class="nav-number">4.</span> <span class="nav-text">事务隔离级别的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回滚日志什么时候删除？"><span class="nav-number">4.1.</span> <span class="nav-text">回滚日志什么时候删除？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽量不要使用长事务"><span class="nav-number">4.2.</span> <span class="nav-text">尽量不要使用长事务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务启动方式"><span class="nav-number">5.</span> <span class="nav-text">事务启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何减少显式启动事务的begin语句？"><span class="nav-number">5.1.</span> <span class="nav-text">如何减少显式启动事务的begin语句？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长事务查询方法"><span class="nav-number">5.2.</span> <span class="nav-text">长事务查询方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">6.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -582,6 +875,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -599,6 +896,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/03/11/mysql-03/';
+          this.page.identifier = '2020/03/11/mysql-03/';
+          this.page.title = 'mysql-03-事务隔离级别';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
