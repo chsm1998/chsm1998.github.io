@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java,Thread," />
+  <meta name="keywords" content="java,mysql," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="使用线程通信完成交替打印1-100实现原理实现线程间的交替打印主要是通过wait()和notify()两个方法。下面我们来讲一下几个相关方法的作用  注：以下3个方法都必须在同步代码块或同步方法中调用，否则会抛出java.lang.IllegalMonitorStateException异常   wait()：一旦执行该方法，当前线程就会进入阻塞状态，并释放同步监视器(意味着其他线程可以进入)。">
-<meta name="keywords" content="java,Thread">
+<meta name="description" content="背景现在基本上开发过程中都会使用到逻辑删除，但当逻辑删除与唯一索引一起存在时可能会导致一些问题。 问题起因一天收到测试提的一个bug，然后对问题进行排查，发现是由于唯一索引冲突导致的无法插入数据造成的问题，当时很费解，因为该唯一索引字段已经在业务层做了唯一性校验理论上不应该出现索引冲突的问题啊！后来仔细一想发现应该是逻辑删除和唯一索引一起使用时导致的问题。下面开始对问题进行分析，为方便分析对表结构">
+<meta name="keywords" content="java,mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初识Java多线程之线程间的通信">
-<meta property="og:url" content="http://yoursite.com/2019/06/06/multithreading-04/index.html">
+<meta property="og:title" content="逻辑删除和唯一索引">
+<meta property="og:url" content="http://yoursite.com/2020/08/29/logical-deletion-and-unique-index/index.html">
 <meta property="og:site_name" content="月华">
-<meta property="og:description" content="使用线程通信完成交替打印1-100实现原理实现线程间的交替打印主要是通过wait()和notify()两个方法。下面我们来讲一下几个相关方法的作用  注：以下3个方法都必须在同步代码块或同步方法中调用，否则会抛出java.lang.IllegalMonitorStateException异常   wait()：一旦执行该方法，当前线程就会进入阻塞状态，并释放同步监视器(意味着其他线程可以进入)。">
+<meta property="og:description" content="背景现在基本上开发过程中都会使用到逻辑删除，但当逻辑删除与唯一索引一起存在时可能会导致一些问题。 问题起因一天收到测试提的一个bug，然后对问题进行排查，发现是由于唯一索引冲突导致的无法插入数据造成的问题，当时很费解，因为该唯一索引字段已经在业务层做了唯一性校验理论上不应该出现索引冲突的问题啊！后来仔细一想发现应该是逻辑删除和唯一索引一起使用时导致的问题。下面开始对问题进行分析，为方便分析对表结构">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-07T05:42:05.157Z">
+<meta property="og:updated_time" content="2020-08-29T08:54:43.484Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识Java多线程之线程间的通信">
-<meta name="twitter:description" content="使用线程通信完成交替打印1-100实现原理实现线程间的交替打印主要是通过wait()和notify()两个方法。下面我们来讲一下几个相关方法的作用  注：以下3个方法都必须在同步代码块或同步方法中调用，否则会抛出java.lang.IllegalMonitorStateException异常   wait()：一旦执行该方法，当前线程就会进入阻塞状态，并释放同步监视器(意味着其他线程可以进入)。">
+<meta name="twitter:title" content="逻辑删除和唯一索引">
+<meta name="twitter:description" content="背景现在基本上开发过程中都会使用到逻辑删除，但当逻辑删除与唯一索引一起存在时可能会导致一些问题。 问题起因一天收到测试提的一个bug，然后对问题进行排查，发现是由于唯一索引冲突导致的无法插入数据造成的问题，当时很费解，因为该唯一索引字段已经在业务层做了唯一性校验理论上不应该出现索引冲突的问题啊！后来仔细一想发现应该是逻辑删除和唯一索引一起使用时导致的问题。下面开始对问题进行分析，为方便分析对表结构">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/06/multithreading-04/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/08/29/logical-deletion-and-unique-index/"/>
 
 
 
 
 
-  <title>初识Java多线程之线程间的通信 | 月华</title>
+  <title>逻辑删除和唯一索引 | 月华</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/06/multithreading-04/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/29/logical-deletion-and-unique-index/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="月华">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">初识Java多线程之线程间的通信</h1>
+          <h1 class="post-title" itemprop="name headline">逻辑删除和唯一索引</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T18:54:56+08:00">
-                2019-06-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-29T15:14:36+08:00">
+                2020-08-29
               </time>
             
 
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-07T13:42:05+08:00">
-                2019-06-07
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-29T16:54:43+08:00">
+                2020-08-29
               </time>
             
           </span>
@@ -361,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/多线程/" itemprop="url" rel="index">
-                    <span itemprop="name">多线程</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -379,9 +379,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/06/multithreading-04/#comments" itemprop="discussionUrl">
+                <a href="/2020/08/29/logical-deletion-and-unique-index/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/06/multithreading-04/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2020/08/29/logical-deletion-and-unique-index/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,30 +409,95 @@
       
 
       
-        <h2 id="使用线程通信完成交替打印1-100"><a href="#使用线程通信完成交替打印1-100" class="headerlink" title="使用线程通信完成交替打印1-100"></a>使用线程通信完成交替打印1-100</h2><h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>实现线程间的交替打印主要是通过<strong>wait()</strong>和<strong>notify()</strong>两个方法。下面我们来讲一下几个相关方法的作用</p>
-<blockquote>
-<p>注：以下3个方法都必须在同步代码块或同步方法中调用，否则会抛出<strong>java.lang.IllegalMonitorStateException</strong>异常</p>
-</blockquote>
-<ol>
-<li>wait()：一旦执行该方法，当前线程就会进入阻塞状态，并释放同步监视器(意味着其他线程可以进入)。</li>
-<li>notify()：一旦执行该方法，就会唤醒一个wait的线程，如果有多个线程wait，则唤醒优先级最高的那个。</li>
-<li>notifyAll()：一旦执行该方法，会唤醒所有被wait的线程。</li>
-</ol>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>现在基本上开发过程中都会使用到逻辑删除，但当逻辑删除与唯一索引一起存在时可能会导致一些问题。</p>
+<h1 id="问题起因"><a href="#问题起因" class="headerlink" title="问题起因"></a>问题起因</h1><p>一天收到测试提的一个bug，然后对问题进行排查，发现是由于唯一索引冲突导致的无法插入数据造成的问题，当时很费解，因为该唯一索引字段已经在业务层做了唯一性校验理论上不应该出现索引冲突的问题啊！后来仔细一想发现应该是逻辑删除和唯一索引一起使用时导致的问题。下面开始对问题进行分析，为方便分析对表结构进行了简化。</p>
 <a id="more"></a>
-<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.socket.multithreading;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RunnableImpl2</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">                notify();</span><br><span class="line">                <span class="keyword">if</span> (num &lt;= <span class="number">100</span>) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + num);</span><br><span class="line">                    num++;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        wait();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommunicationThread</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Runnable runnable = <span class="keyword">new</span> RunnableImpl2();</span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(runnable);</span><br><span class="line">        Thread thread2 = <span class="keyword">new</span> Thread(runnable);</span><br><span class="line">        thread1.setName(<span class="string">"线程1"</span>);</span><br><span class="line">        thread2.setName(<span class="string">"线程2"</span>);</span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="分析代码执行过程"><a href="#分析代码执行过程" class="headerlink" title="分析代码执行过程"></a>分析代码执行过程</h3><blockquote>
-<p>注：以下描述的同步监视器等同于锁</p>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><h2 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test`</span>.<span class="string">`user`</span>  (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'主键'</span>,</span><br><span class="line">  <span class="string">`is_deleted`</span> tinyint(<span class="number">4</span>) <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'逻辑删除'</span>,</span><br><span class="line">  <span class="string">`username`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'用户名（唯一）'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="表索引"><a href="#表索引" class="headerlink" title="表索引"></a>表索引</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`test`</span>.<span class="string">`user`</span> </span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> <span class="string">`uk_username`</span>(<span class="string">`username`</span>) <span class="keyword">USING</span> BTREE <span class="keyword">COMMENT</span> <span class="string">'用户名唯一索引'</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：is_deleted字段为逻辑删除字段，0为未删除，1：为已删除</p>
 </blockquote>
-<p>我们以<strong>A、B</strong>来代替代码中的两个线程，首先两个线程其他，假设A抢到了CPU执行权，则执行run方法，首先<strong>线程A调用notify()方法</strong>，此时没有线程wait，所以不会唤醒任何线程，然后A打印出1，并执行num++，最后<strong>线程A调用wait()方法</strong>。此时线程A进入阻塞状态，释放同步监视器，线程B可以拿到锁。然后<strong>线程B调用notify()方法唤醒线程A</strong>，由于锁没释放，所以线程A暂时不能执行。最后<strong>线程B调用wait()方法</strong>，进入阻塞状态，释放同步监视器。然后线程A可以拿到锁，执行相应代码，如此循环往复就会出现交替打印的效果。</p>
-<h2 id="sleep与wait方法有什么区别？"><a href="#sleep与wait方法有什么区别？" class="headerlink" title="sleep与wait方法有什么区别？"></a>sleep与wait方法有什么区别？</h2><h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p>执行这两个方法后都会使线程进入阻塞状态</p>
-<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><ol>
-<li>sleep方法声明在Thread类中，而wait方法声明咋Object类当中。</li>
-<li>sleep方法可以在任意场景当中调用，而wait方法只能在同步代码块或同步方法中调用。</li>
-<li>sleep方法调用后不会释放同步监视器，而wait方法调用后会释放同步监视器。</li>
+<p>首先我们先插入一条数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">user</span> ( <span class="keyword">id</span>, is_deleted, username ) <span class="keyword">VALUES</span> ( <span class="number">1299617941335060482</span>, <span class="number">0</span>, <span class="string">"hello"</span> )</span><br></pre></td></tr></table></figure>
+<p>然后我们再将这条数据以逻辑删除的方式删掉：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">user</span> <span class="keyword">SET</span> is_deleted=<span class="number">1</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1299617941335060482</span> <span class="keyword">AND</span> is_deleted=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>当我们想再次插入username为”hello”的数据时就会发生唯一索引冲突：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">user</span> ( <span class="keyword">id</span>, is_deleted, username ) <span class="keyword">VALUES</span> ( <span class="number">1299619108853121025</span>, <span class="number">0</span>, <span class="string">"hello"</span> )</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Duplicate entry ‘hello’ for key ‘uk_username’</p>
+</blockquote>
+<p>此时数据库数据状态：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">is_deleted</th>
+<th style="text-align:center">username</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1299617941335060482</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">hello</td>
+</tr>
+</tbody>
+</table>
+<p>原因相信大家都很清楚，这是由于逻辑删除并未真正的删除表中的数据，哪怕此时我们在业务层做了唯一性校验依然会出现这种问题。因为唯一性校验的SQL默认会拼接上逻辑索引字段，导致无法查出相应数据，最终引发了<code>Duplicate entry &#39;hello&#39; for key &#39;uk_username&#39;</code></p>
+<p>唯一校验SQL：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,is_deleted,username <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> is_deleted=<span class="number">0</span> <span class="keyword">AND</span> (username = <span class="string">"hello"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="如何处理？"><a href="#如何处理？" class="headerlink" title="如何处理？"></a>如何处理？</h2><h3 id="初步解决方案"><a href="#初步解决方案" class="headerlink" title="初步解决方案"></a>初步解决方案</h3><p>一开始想着既然是由于唯一索引冲突导致的，那么我们就把is_deleted和username建立成联合唯一索引不就好了吗？</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`test`</span>.<span class="string">`user`</span> </span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> <span class="string">`uk_username`</span>,</span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> <span class="string">`uk_username_and_is_deleted`</span>(<span class="string">`username`</span>, <span class="string">`is_deleted`</span>) <span class="keyword">USING</span> BTREE <span class="keyword">COMMENT</span> <span class="string">'用户名唯一索引'</span>;</span><br></pre></td></tr></table></figure>
+<p>此时数据库数据：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">is_deleted</th>
+<th style="text-align:center">username</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1299617941335060482</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">hello</td>
+</tr>
+<tr>
+<td style="text-align:center">1299621533785911298</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">hello</td>
+</tr>
+</tbody>
+</table>
+<p>加上唯一索引之后测试完插入语句发现确实没问题了，由于联合索引的缘故不会再出现和已删除的数据冲突的情况，但此时删除数据又会出现问题：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">user</span> <span class="keyword">SET</span> is_deleted=<span class="number">1</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1299621533785911298</span> <span class="keyword">AND</span> is_deleted=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>当我们想删除id为1299621533785911298的数据时又会发生唯一索引冲突。</p>
+<h3 id="最终解决方案"><a href="#最终解决方案" class="headerlink" title="最终解决方案"></a>最终解决方案</h3><ol>
+<li><p>去除唯一索引，业务层做完善校验（不推荐）</p>
+<blockquote>
+<p>原因：业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引。（阿里巴巴Java开发规范）</p>
+<p>除非现有表结构中已经积累了大量数据，导致做全库DDL（DDL语句会锁整张表，不要轻易在线上做DDL操作）及数据迁移困难，否则不推荐采取该方案。</p>
+<p>说明：不要以为唯一索引影响了 insert 速度，这个速度损耗可以忽略，但提高查找速度是明显的；另外，<strong>即使在应用层做了非常完善的校验控制，只要没有唯一索引，根据墨菲定律，必然有脏数据产生。</strong></p>
+</blockquote>
+</li>
+<li><p><strong>建立联合索引，is_deteled字段不要用单纯的0和1来表示，可以用0来表示正常数据，逻辑删除数据可以有以下几种方案来表示（推荐）</strong></p>
+<ol>
+<li><p>将删除标识的正常设为固定值,删除值使用叠加值(-1,-2,-3)<strong>（该方案需保证字段值为全局递增或全局递减，分布式环境下实现复杂）</strong></p>
+</li>
+<li><p><strong>将删除标识的删除状态设为id（推荐，使用主键确保不会发生索引冲突，并且实现简单）</strong></p>
+<p>若使用的是mybatis-plus框架可将logic-delete-value设置为如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">logic-delete-value:</span> <span class="string">id</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将删除标识设为当前时间戳<strong>（时间戳在极端情况下依旧有索引冲突的风险）</strong></p>
+<p>若使用的是mybatis-plus框架可将logic-delete-value设置为如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">logic-delete-value:</span> <span class="string">REPLACE(unix_timestamp(current_timestamp(3)),'.','')</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h2 id="生产者消费者问题"><a href="#生产者消费者问题" class="headerlink" title="生产者消费者问题"></a>生产者消费者问题</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>生产者和消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一个存储空间，生产者往存储空间中添加产品，消费者从存储空间中取走产品，当存储空间为空时，消费者阻塞，当存储空间满时，生产者阻塞。</p>
-<h3 id="实现代码-1"><a href="#实现代码-1" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.socket.multithreading;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 负责通知生产和消费的店员</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clerk</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Integer num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">product</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (num &lt; <span class="number">20</span>) &#123;</span><br><span class="line">            num++;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"开始生产第"</span> + num + <span class="string">"件商品"</span>);</span><br><span class="line">            notify();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">customer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"开始消费第"</span> + num + <span class="string">"件商品"</span>);</span><br><span class="line">            num--;</span><br><span class="line">            notify();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 生产者</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Clerk clerk;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Product</span><span class="params">(Clerk clerk)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.clerk = clerk;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"开始生产："</span>);</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            clerk.product();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">10</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 消费者</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Customer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Clerk clerk;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">(Clerk clerk)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.clerk = clerk;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"开始消费："</span>);</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            clerk.customer();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">20</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductAndCustomer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Clerk clerk = <span class="keyword">new</span> Clerk();</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Customer(clerk));</span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Product(clerk));</span><br><span class="line">        thread.setName(<span class="string">"消费者"</span>);</span><br><span class="line">        thread1.setName(<span class="string">"生产者"</span>);</span><br><span class="line">        thread.start();</span><br><span class="line">        thread1.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该段代码实现原理基本与交替打印类似，不再详述。</p>
+<p>若采用该方案我们需对表结构进行一定的修改，因为原来的逻辑删除字段为tinyint(4)类型，长度不足以支撑该解决方案</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`test`</span>.<span class="string">`user`</span> </span><br><span class="line"><span class="keyword">MODIFY</span> <span class="keyword">COLUMN</span> <span class="string">`is_deleted`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'逻辑删除'</span> <span class="keyword">AFTER</span> <span class="string">`id`</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
@@ -452,7 +517,7 @@
           
             <a href="/tags/java/" rel="tag"># java</a>
           
-            <a href="/tags/Thread/" rel="tag"># Thread</a>
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
           
         </div>
       
@@ -465,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/02/multithreading-03/" rel="next" title="初识Java多线程之synchronized">
-                <i class="fa fa-chevron-left"></i> 初识Java多线程之synchronized
+              <a href="/2020/03/23/mysql-04/" rel="next" title="mysql-04-索引">
+                <i class="fa fa-chevron-left"></i> mysql-04-索引
               </a>
             
           </div>
@@ -474,10 +539,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/07/multithreading-05/" rel="prev" title="创建多线程方式之Callable">
-                创建多线程方式之Callable <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -667,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用线程通信完成交替打印1-100"><span class="nav-number">1.</span> <span class="nav-text">使用线程通信完成交替打印1-100</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现原理"><span class="nav-number">1.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现代码"><span class="nav-number">1.2.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析代码执行过程"><span class="nav-number">1.3.</span> <span class="nav-text">分析代码执行过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sleep与wait方法有什么区别？"><span class="nav-number">2.</span> <span class="nav-text">sleep与wait方法有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相同点"><span class="nav-number">2.1.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同点"><span class="nav-number">2.2.</span> <span class="nav-text">不同点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生产者消费者问题"><span class="nav-number">3.</span> <span class="nav-text">生产者消费者问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现代码-1"><span class="nav-number">3.2.</span> <span class="nav-text">实现代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题起因"><span class="nav-number">2.</span> <span class="nav-text">问题起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题分析"><span class="nav-number">3.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表结构"><span class="nav-number">3.1.</span> <span class="nav-text">表结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表索引"><span class="nav-number">3.2.</span> <span class="nav-text">表索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何处理？"><span class="nav-number">3.3.</span> <span class="nav-text">如何处理？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初步解决方案"><span class="nav-number">3.3.1.</span> <span class="nav-text">初步解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终解决方案"><span class="nav-number">3.3.2.</span> <span class="nav-text">最终解决方案</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -824,9 +885,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/06/06/multithreading-04/';
-          this.page.identifier = '2019/06/06/multithreading-04/';
-          this.page.title = '初识Java多线程之线程间的通信';
+          this.page.url = 'http://yoursite.com/2020/08/29/logical-deletion-and-unique-index/';
+          this.page.identifier = '2020/08/29/logical-deletion-and-unique-index/';
+          this.page.title = '逻辑删除和唯一索引';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
