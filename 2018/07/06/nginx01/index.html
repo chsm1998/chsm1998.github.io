@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="月华">
 <meta property="og:description" content="遇到的问题the HTTP rewrite module requires the PCRE library error: the HTTP rewrite module requires the PCRE library.You can either disable the module by using –without-http_rewrite_moduleoption, or instal">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-06T03:46:54.774Z">
+<meta property="og:updated_time" content="2020-11-16T06:29:22.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下nginx的安装">
 <meta name="twitter:description" content="遇到的问题the HTTP rewrite module requires the PCRE library error: the HTTP rewrite module requires the PCRE library.You can either disable the module by using –without-http_rewrite_moduleoption, or instal">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-06T11:46:54+08:00">
-                2018-07-06
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-16T14:29:22+08:00">
+                2020-11-16
               </time>
             
           </span>
@@ -423,6 +423,12 @@
 <p>解决方案：</p>
 <blockquote>
 <p>yum install -y zlib-devel</p>
+</blockquote>
+<h3 id="C-compiler-cc-is-not-found"><a href="#C-compiler-cc-is-not-found" class="headerlink" title="C compiler cc is not found"></a>C compiler cc is not found</h3><p>原因：</p>
+<p>缺少 gcc-c++ 的包</p>
+<p>解决方案：</p>
+<blockquote>
+<p>yum -y install gcc-c++</p>
 </blockquote>
 <h2 id="nginx的下载及安装"><a href="#nginx的下载及安装" class="headerlink" title="nginx的下载及安装"></a>nginx的下载及安装</h2><p><a href="http://nginx.org/" target="_blank" rel="noopener">官网</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 下载</span><br><span class="line">wget http://nginx.org/download/nginx-1.14.0.tar.gz</span><br><span class="line">// 解压</span><br><span class="line">tar xzvf nginx-1.14.0.tar.gz</span><br><span class="line">// 进入 nginx-1.14.0目录</span><br><span class="line">cd nginx-1.14.0</span><br><span class="line">// 安装</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
 <h2 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h2><p>进入安装目录，默认为/usr/local/nginx</p>
@@ -667,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-HTTP-rewrite-module-requires-the-PCRE-library"><span class="nav-number">1.1.</span> <span class="nav-text">the HTTP rewrite module requires the PCRE library</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-HTTP-gzip-module-requires-the-zlib-library"><span class="nav-number">1.2.</span> <span class="nav-text">the HTTP gzip module requires the zlib library</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx的下载及安装"><span class="nav-number">2.</span> <span class="nav-text">nginx的下载及安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动nginx"><span class="nav-number">3.</span> <span class="nav-text">启动nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止nginx"><span class="nav-number">4.</span> <span class="nav-text">停止nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重启nginx"><span class="nav-number">5.</span> <span class="nav-text">重启nginx</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-HTTP-rewrite-module-requires-the-PCRE-library"><span class="nav-number">1.1.</span> <span class="nav-text">the HTTP rewrite module requires the PCRE library</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-HTTP-gzip-module-requires-the-zlib-library"><span class="nav-number">1.2.</span> <span class="nav-text">the HTTP gzip module requires the zlib library</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-compiler-cc-is-not-found"><span class="nav-number">1.3.</span> <span class="nav-text">C compiler cc is not found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx的下载及安装"><span class="nav-number">2.</span> <span class="nav-text">nginx的下载及安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动nginx"><span class="nav-number">3.</span> <span class="nav-text">启动nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止nginx"><span class="nav-number">4.</span> <span class="nav-text">停止nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重启nginx"><span class="nav-number">5.</span> <span class="nav-text">重启nginx</span></a></li></ol></div>
             
 
           </div>
