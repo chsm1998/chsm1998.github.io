@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[informal_essay]]></title>
+    <title><![CDATA[java对象数组与基本类型数组]]></title>
+    <url>%2F2021%2F06%2F04%2Fjava-object-arrays-and-base-arrays%2F</url>
+    <content type="text"><![CDATA[对象数组和基本类型数组有什么不同？最近在看一本书，书名叫《软件困局：为什么聪明的程序员会写出糟糕的代码》，作者在第四章提到了C语言的数组。由此我想的了Java的数组，并在脑海里衍生出了一个问题。那就是 对象数组 和 基本数据数组 的区别。乍一看两者都是数组，能有什么区别？但仔细一想发现不对。我们都知道数组是支持按下标 随机访问 的，算法复杂度为O(1)。之所以有如此快的访问速度是因为数组的每个元素所占用的大小是固定的。这样我们只需要知道头结点的地址，就可以推算出任意一个元素的地址。 像java中的int(4字节)，long(8字节)等基本数据类型它们所占用的空间是固定的，所以数组能够随机访问很正常。但对象则不一样，拿String举例，每一个String对象所占用的空间是不一样的。数组该如何分配空间，以支持随机访问呢？这个问题我思考了很久，难道对象数组有着与基本数据类型数组不一样的实现方式吗？经过在网络一番查找，我得到了大致想要的答案。 直接说结论，那就是基本数据类型数组存放的是基本类型的值，对象数组存的是句柄（指针）。每个句柄（指针）所占用的空间是相同的，所以支持随机访问， 只不过对象数组需要比基本数据类型多一次寻址 （最后一句话仅是个人理解，不一定准确）。 我首先找到的是一篇博客 https://blog.csdn.net/z_ssyy/article/details/104521222 ，根据他的排版，感觉也是从其他地方摘抄的，内容并不完全。其中有这么一句话“ 唯一的差别在于对象数组容纳的是句柄，而基本数据类型数组容纳的是具体的数值 ”。后续我也尝试对这句话进行取证，先是准备查Java编程思想，看看其中有没有对数组的解释，但由于纸质书在老家，微信读书电子版只能试读，所以放弃。后续查阅了Java核心技术，发现当中并没有对应的解释。于是只能从《Java语言规范》和《Java虚拟机规范》找答案。 我并没有找到确切描述两者不同的文字，但可以从部分描述中推断出一部分信息。首先在《Java语言规范》的第四章 https://docs.oracle.com/javase/specs/jls/se16/html/jls-4.html ，有这么一段话： The values of a reference type are references to objects 引用类型的值是对对象的引用，通过这句话我们可以推导出对象数组中存放的就是对象的引用。通过这句话也发现了自己以前的一个误区。那就是以前以为变量指向的就是数据，实际上变量指向的是数据的引用地址，需要再次寻址才能拿到真正的数据。 A variable of a primitive type always holds a primitive value of that exact primitive type. 这句话说明了基本数据类型，指向的就是值，没有引用。 思考基本数据类型和引用数据类型的本质差别是什么？ 将数据映射到硬件上，其实所有数据都应该有着自己的地址。不管是基本数据类型，还是引用数据类型。以下均为个人理解： 如图： 基本数据类型实际上只占用一块空间，而引用数据类型需要占用两块空间（注意每块空间的大小是不一样的）。这样我们对基本数据类型的修改，实际上改的就是地址01里面的值。对引用数据类型修改就会有两种情况，一种改的是03的值，一种改的的02的引用。举一个例子： 123456789101112131415161718192021222324252627282930313233343536public static void main(String[] args) &#123; ArrayList&lt;String&gt; arrays = new ArrayList&lt;&gt;(); arrays.add("10"); arrays.add("20"); arrays.add("30"); System.out.println("未修改：" + arrays); updateVal(arrays); System.out.println("修改值：" + arrays); List&lt;String&gt; newArrays = updateRef(arrays); System.out.println("修改引用：" + arrays); System.out.println("新引用值：" + newArrays);&#125;/** * 修改的是03地址当中的值 * * @param arrays 原集合 */private static void updateVal(List&lt;String&gt; arrays) &#123; arrays.set(1, "1");&#125;/** * 修改的是02地址中的值，将02地址中的引用指向了04 * * @param arrays 原集合 * @return 新集合 */private static List&lt;String&gt; updateRef(List&lt;String&gt; arrays) &#123; List&lt;String&gt; newArrays = new ArrayList&lt;&gt;(); newArrays.add("hello"); arrays = newArrays; arrays.add("40"); arrays.add("50"); return arrays;&#125;]]></content>
+      <categories>
+        <category>java基础知识</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>Thread</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[随笔(01)]]></title>
     <url>%2F2021%2F05%2F12%2Finformal-essay%2F</url>
     <content type="text"><![CDATA[​ 博客有很久都没有更新了，2020年底立下的flag一个也没完成。20年底说着每周一更，每月4更，到今天已经5月份了，算下来欠下了将近20篇文章。原因有很多方面，一方面是自己精力有限，另一方面是由于感觉自己学的东西不成体系，太过零散，没办法凑出一篇博客的内容。所以就没往博客上发，发在了新的随笔上，链接如下：个人随笔,后续会把链接放到友链上，方便访问。 ​ 说一下这几个月来的成果，年初一段时间基本都在为了换工作而在疯狂的背八股文。工作稳定后也在思考，感觉光靠被八股文不够，对某些东西的理解还是不够透彻，都是靠死记硬背。就像提到HashMap就想到数组+链表+红黑树。你说真正理解了吗？其实并没有，数组到链表其实还好理解，但到了红黑树就一问三不知了，到现在为止我也没搞清楚红黑树的定义，以及是如何实现的。这只是一部分。花时间仍然可以去理解，不算太大的瓶颈。主要的瓶颈在kafka等类似的中间件上，比如说kafka是分区有序的，数据是顺序写。但道理是如何实现顺序写了没有一篇文章去讲清楚。这时候已经明显的感觉到软件知识已经不够用了。需要结合硬件一起来看待。不去了解硬件你根本不会理解顺序写、随机写到底是什么。软件学到最后真的发现就是：数据结构+算法，甚至有些时候觉得两者就是一个东西。 ​ 计算机科学速成课给了我很大的启发，它让我感觉到以前的学习方向都是错误的。觉得曾经学习的知识都太过上层了，无法融会贯通。看了几章视频后我发现，可能作为2一个软件工程师就不应该分什么前后端，甚至语言在我眼里也变得不重要。因为无论什么语言无非都是对二进制的高度抽象，最终传输给计算机的还是一个一个”0”,”1”字符。这时候才发现自己原来所看待问题的方式太过上层了，不管什么语言语法，始终都是建立在硬件之上的，”九层之台，起于累土“。只有真正的理解了硬件的实现，才能更好的去理解软件。最后的最后软件剩下的只有：架构的核心思想+数据结构+算法，三者组成了软件的灵魂。 ​ 后续一周一更的博客应该是很难实现了，觉得目前的自己太过于浮躁了，需要花时间好好的沉淀一下。去思考如何抛开语言，抛开前后端的思考问题。一个优秀的程序员不应该被语言牵绊。诚然，每门语言都有各自的特性，每个方向都有各自的知识，一个人是不可能学尽所有的知识的。目前其实自己的方向还不是很明朗，始终无法贯通前后端和各个技术栈。看过“左耳朵耗子”、七牛云CEO”许式伟“、刘超等各位大牛的几篇文章后，发现他们好像已经摆脱了语言，方向的束缚。可以和你从java聊到go，从前端聊到后端，从redis聊到kubernetes。希望自己有朝一日能够达到他们这样的水准。 ​ 最后再重新立一下flag，以后博客两周一更新，随笔基本上会随时更。后续的重点方向应该会放在计算机组成原理这块。也会花部分时间继续学习应用层的知识，两者各占一半吧。其实说了那么久自己都是站在一个技术人的角度思考，后续应该也会跳出技术人的桎梏，去思考一下自己的人生。]]></content>
       <categories>
@@ -42,8 +54,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>mysql</tag>
         <tag>java</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -217,8 +229,8 @@
     <url>%2F2018%2F07%2F16%2Flinux-java-install%2F</url>
     <content type="text"><![CDATA[Linux下java的安装基本环境Linux: CentOS Linux release 7.5.1804 (Core)Java: java version “10.0.1” 下载java首先进入oracle官网找到你需要下载的java版本:http://www.oracle.com/technetwork/java/javase/downloads/index.html我这里一jdk10为例，在linux下执行以下命令即可下载: wget http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz 如果提示wget未找到命令则执行: yum install wget -ywget http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz 解压javatar xzvf jdk-10.0.1_linux-x64_bin.tar.gz 配置环境变量打开profile vi /etc/profile 按i编辑,在文件末尾加上 export JAVA_HOME=jdk-10.0.1export PATH=$JAVA_HOME/bin:$PATH 首先按esc退出insert模式，然后输入##:wq##保存文件最后执行: source /etc/profile 测试配置是否生效输入: java -version 输出： [root@localhost /]# java -versionjava version “10.0.1” 2018-04-17Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)]]></content>
       <tags>
-        <tag>linux</tag>
         <tag>java</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
