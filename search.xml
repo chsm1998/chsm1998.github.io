@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JAVA与PHP互相调用造成服务假死]]></title>
+    <url>%2F2021%2F06%2F07%2Fservice-feign-death%2F</url>
+    <content type="text"><![CDATA[事情的起源是这样的，公司老的服务是由PHP构建的，现在要逐步转向Java。于是要进行新老服务的替换与迁移。我们目前的策略是按模块，一部分一部分替换，直到Java服务能完全替代原来的PHP服务。也就是说会存在PHP与Java服务同时存在的情况。用户鉴权这块目前还是由PHP提供，所以Java需要调用PHP相关的接口，以拿到用户的信息。 说一下大致的业务流程： JAVA端生成二维码 PHP应用扫描后将当前登录用户的token传递给Java应用 Java端通过token回调PHP接口，获取用户信息 123PHP应用 -&gt; JAVA应用 : 步骤1：扫码二维码PHP应用 -&gt; JAVA应用 : 步骤2：携带二维码信息及PHP TOKEN回调Java接口(/java/code/callback)JAVA应用 -&gt; PHP应用 : 步骤3：回调PHP用户接口(/php/userinfo) 大致就是这么一个业务流程，在和PHP方联调接口时发现，在执行步骤2(PHP回调/java/code/callback)时，JAVA接口一直无法返回数据，直到超时。但使用postman测试Java接口是正常的。这就令人很疑惑。经过查看Java端的日志发现，在Java端执行步骤3(/php/userifno)时PHP接口一直没有返回用户信息导致超时。如此就形成了一个连锁反应，PHP-JAVA-PHP（超时）导致整个调用链路超时。由于我们没有专业的PHP工程师，遗留的PHP代码也是由Java开发进行维护的，所以导致排查问题很困难。于是开始通过百度查找答案，首先看到的是这一篇文章：PHP是单线程还是多线程？,当中有这么一句话： 每个PHP文件的执行是单线程的，但是，服务器（apache/nigix/php-fpm）是多线程的。每次对某个PHP文件的访问服务器都会创建一个新的进程/线程，用来执行对应的PHP文件。 于是我错误的把这句话理解为，PHP对于单个文件的执行的串行的（其实仔细想想也不太可能，如果真是这样，PHP面对并发基本是无解状态），而且刚好我们的互相调用的代码在同一个文件当中。于是我们将两个接口分开。发现还是有这个问题。于是我们继续百度看看有没有类似的问题，终于我们找到了导致问题的原因： PHP session阻塞页面的问题 PHP中Session引起的脚本阻塞问题解决办法 总结下来很简单，由于PHP的Session信息是写入文件的，1个客户端占有1个session文件。因此，当 session_start被调用的时候，该文件是被锁住的，而且是以读写模式锁住的（因为程序中可能要修改session的值），这样，第2次调用 session_start的时候就被阻塞了。 回想我们应用的调用流程： 客户端扫码调用PHP接口（将二维码信息给PHP，PHP第一次获取session） PHP服务端回调Java携带当前用户token JAVA收到回调后调用PHP接口获取用户信息（PHP第二次获取session，此时无法获取，因为第一次获取的锁还没有释放） 通过这次问题的排查，也明白了不同语言的实现方式是不一样的，像Java就不会有这种问题（Java不会将session信息写入文件，也不存在所谓文件锁）。]]></content>
+      <categories>
+        <category>疑难杂症</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>php</tag>
+        <tag>系统知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[java对象数组与基本类型数组]]></title>
     <url>%2F2021%2F06%2F04%2Fjava-object-arrays-and-base-arrays%2F</url>
     <content type="text"><![CDATA[对象数组和基本类型数组有什么不同？最近在看一本书，书名叫《软件困局：为什么聪明的程序员会写出糟糕的代码》，作者在第四章提到了C语言的数组。由此我想的了Java的数组，并在脑海里衍生出了一个问题。那就是 对象数组 和 基本数据数组 的区别。乍一看两者都是数组，能有什么区别？但仔细一想发现不对。我们都知道数组是支持按下标 随机访问 的，算法复杂度为O(1)。之所以有如此快的访问速度是因为数组的每个元素所占用的大小是固定的。这样我们只需要知道头结点的地址，就可以推算出任意一个元素的地址。 像java中的int(4字节)，long(8字节)等基本数据类型它们所占用的空间是固定的，所以数组能够随机访问很正常。但对象则不一样，拿String举例，每一个String对象所占用的空间是不一样的。数组该如何分配空间，以支持随机访问呢？这个问题我思考了很久，难道对象数组有着与基本数据类型数组不一样的实现方式吗？经过在网络一番查找，我得到了大致想要的答案。 直接说结论，那就是基本数据类型数组存放的是基本类型的值，对象数组存的是句柄（指针）。每个句柄（指针）所占用的空间是相同的，所以支持随机访问， 只不过对象数组需要比基本数据类型多一次寻址 （最后一句话仅是个人理解，不一定准确）。 我首先找到的是一篇博客 https://blog.csdn.net/z_ssyy/article/details/104521222 ，根据他的排版，感觉也是从其他地方摘抄的，内容并不完全。其中有这么一句话“ 唯一的差别在于对象数组容纳的是句柄，而基本数据类型数组容纳的是具体的数值 ”。后续我也尝试对这句话进行取证，先是准备查Java编程思想，看看其中有没有对数组的解释，但由于纸质书在老家，微信读书电子版只能试读，所以放弃。后续查阅了Java核心技术，发现当中并没有对应的解释。于是只能从《Java语言规范》和《Java虚拟机规范》找答案。 我并没有找到确切描述两者不同的文字，但可以从部分描述中推断出一部分信息。首先在《Java语言规范》的第四章 https://docs.oracle.com/javase/specs/jls/se16/html/jls-4.html ，有这么一段话： The values of a reference type are references to objects 引用类型的值是对对象的引用，通过这句话我们可以推导出对象数组中存放的就是对象的引用。通过这句话也发现了自己以前的一个误区。那就是以前以为变量指向的就是数据，实际上变量指向的是数据的引用地址，需要再次寻址才能拿到真正的数据。 A variable of a primitive type always holds a primitive value of that exact primitive type. 这句话说明了基本数据类型，指向的就是值，没有引用。 思考基本数据类型和引用数据类型的本质差别是什么？ 将数据映射到硬件上，其实所有数据都应该有着自己的地址。不管是基本数据类型，还是引用数据类型。以下均为个人理解： 如图： 基本数据类型实际上只占用一块空间，而引用数据类型需要占用两块空间（注意每块空间的大小是不一样的）。这样我们对基本数据类型的修改，实际上改的就是地址01里面的值。对引用数据类型修改就会有两种情况，一种改的是03的值，一种改的的02的引用。举一个例子： 123456789101112131415161718192021222324252627282930313233343536public static void main(String[] args) &#123; ArrayList&lt;String&gt; arrays = new ArrayList&lt;&gt;(); arrays.add("10"); arrays.add("20"); arrays.add("30"); System.out.println("未修改：" + arrays); updateVal(arrays); System.out.println("修改值：" + arrays); List&lt;String&gt; newArrays = updateRef(arrays); System.out.println("修改引用：" + arrays); System.out.println("新引用值：" + newArrays);&#125;/** * 修改的是03地址当中的值 * * @param arrays 原集合 */private static void updateVal(List&lt;String&gt; arrays) &#123; arrays.set(1, "1");&#125;/** * 修改的是02地址中的值，将02地址中的引用指向了04 * * @param arrays 原集合 * @return 新集合 */private static List&lt;String&gt; updateRef(List&lt;String&gt; arrays) &#123; List&lt;String&gt; newArrays = new ArrayList&lt;&gt;(); newArrays.add("hello"); arrays = newArrays; arrays.add("40"); arrays.add("50"); return arrays;&#125;]]></content>
@@ -229,8 +242,8 @@
     <url>%2F2018%2F07%2F16%2Flinux-java-install%2F</url>
     <content type="text"><![CDATA[Linux下java的安装基本环境Linux: CentOS Linux release 7.5.1804 (Core)Java: java version “10.0.1” 下载java首先进入oracle官网找到你需要下载的java版本:http://www.oracle.com/technetwork/java/javase/downloads/index.html我这里一jdk10为例，在linux下执行以下命令即可下载: wget http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz 如果提示wget未找到命令则执行: yum install wget -ywget http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz 解压javatar xzvf jdk-10.0.1_linux-x64_bin.tar.gz 配置环境变量打开profile vi /etc/profile 按i编辑,在文件末尾加上 export JAVA_HOME=jdk-10.0.1export PATH=$JAVA_HOME/bin:$PATH 首先按esc退出insert模式，然后输入##:wq##保存文件最后执行: source /etc/profile 测试配置是否生效输入: java -version 输出： [root@localhost /]# java -versionjava version “10.0.1” 2018-04-17Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)]]></content>
       <tags>
-        <tag>java</tag>
         <tag>linux</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
